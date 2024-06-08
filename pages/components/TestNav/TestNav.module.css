@@ -1,0 +1,20 @@
+.test_nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.test_nav button {
+    padding: 10px;
+    border: 0;
+    margin-right: 10px;
+    background: rgb(58, 83, 107);
+    color: white;
+    font-family: "Verdana";
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.test_nav button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}

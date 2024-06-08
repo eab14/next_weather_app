@@ -1,0 +1,57 @@
+body { 
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+section {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    object-fit: fill;
+}
+
+nav {
+    position: absolute;
+    z-index: 4;
+    top: 20px;
+    left: 20px;
+}
+
+svg {
+    min-height: 100%;
+}
+
+canvas {
+    position: absolute;
+    z-index: 2;
+    width: 120vw;
+    height: 100vh;
+}
+
+/* Defaults for svg */
+.cls-1 {
+    fill: #05230f;
+}
+
+.cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+    stroke-width: 0px;
+}
+
+.cls-2 {
+    fill: #011604;
+}
+
+.cls-3 {
+    fill: #86edf2;
+}
+
+.cls-4 {
+    fill: #1c7f61;
+}
+
+.cls-5 {
+    fill: #0e472a;
+}
