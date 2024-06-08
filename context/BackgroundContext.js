@@ -104,7 +104,29 @@ export const BackgroundProvider = ({ children }) => {
         }
 
     }
-    const setWind = () => {}
+    const setWind = (speed) => {
+
+        let km = speed * 3.2;
+        
+        let init = 0;
+        let offset = 0;
+        let delay = 0.5;
+
+        if (km >= 10 && km < 20) { init = -1; offset = -2; }
+        else if (km >= 20 && km < 30) { init = -2; offset = -4; delay = 0.45; }
+        else if (km >= 30 && km < 45) { init = -1; offset = -7; delay = 0.4; }
+        else if (km >= 45) { init = -1; offset = -10; delay = 0.35; }
+
+        const trees = document.querySelectorAll(".tree");
+
+        trees.forEach((tree) => {
+
+            gsap.to(tree, { rotate: init, transformOrigin: "50%, 100%", duration: 0.4 })
+            gsap.to(tree, { rotate: offset, transformOrigin: "50%, 100%", duration: 0.4, yoyo: true, repeat: -1 })
+
+        })
+
+    }
 
     const clearCanvas = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
 

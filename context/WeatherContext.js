@@ -7,7 +7,7 @@ export const useWeather = () => useContext(WeatherContext);
 
 export const WeatherProvider = ({ children }) => {
 
-    const { setSky, addRain, addThunderstorm } = useBG();
+    const { setSky, setWind, addRain, addThunderstorm } = useBG();
 
     const [ weatherData, setWeatherData ] = useState(null);
 
@@ -62,6 +62,8 @@ export const WeatherProvider = ({ children }) => {
         }
 
         else setSky(weatherData.weather[0].description);
+
+        setWind(weatherData.wind.speed);
 
     }
 
