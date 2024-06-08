@@ -8,7 +8,7 @@ const TestNav = () => {
     return (
         <>
             <nav className={styles.test_nav}>
-                <button onClick={addRain}>Add Rain</button>
+                <button onClick={() => addRain("moderate rain")}>Add Rain</button>
                 <button onClick={addSnow}>Add Snow</button>
                 <button onClick={addThunderstorm}>Add Thunderstorm</button>
             </nav>

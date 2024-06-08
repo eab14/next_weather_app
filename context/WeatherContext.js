@@ -7,7 +7,7 @@ export const useWeather = () => useContext(WeatherContext);
 
 export const WeatherProvider = ({ children }) => {
 
-    const { setSky, setWind, addRain, addThunderstorm } = useBG();
+    const { setSky, setWind, addRain, addThunderstorm, resetCanvas } = useBG();
 
     const [ weatherData, setWeatherData ] = useState(null);
 
@@ -22,6 +22,7 @@ export const WeatherProvider = ({ children }) => {
 
             data = await response.json();
             setWeatherData(data);
+            console.log(data)
 
         }
 
@@ -37,6 +38,7 @@ export const WeatherProvider = ({ children }) => {
 
             data = await response.json();
             setWeatherData(data);
+            console.log(data)
 
         }
 
@@ -52,10 +54,10 @@ export const WeatherProvider = ({ children }) => {
             
             switch (weatherData.weather[0].main) {
 
-                case "Rain": addRain(); break;
-                case "Drizzle": addRain(); break;
-                case "Snow": addSnow(); break;
-                case "Thunderstorm": addThunderstorm(); break;
+                case "Rain": addRain(weatherData.weather[0].description); break;
+                case "Drizzle": addRain(weatherData.weather[0].description); break;
+                case "Snow": addSnow(weatherData.weather[0].description); break;
+                case "Thunderstorm": addThunderstorm(weatherData.weather[0].description); break;
 
             }
 

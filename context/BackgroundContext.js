@@ -11,30 +11,40 @@ export const BackgroundProvider = ({ children }) => {
     const [ background, setBackground ] = useState(null);
     const [ ctx, setCtx ] = useState(null);
     const [ inter, setInter ] = useState(null);
+    const [ animation, setAnimation ] = useState(null);
     
-    const addRain = () => {
+    const addRain = (desc) => {
 
         if (inter) clearInterval(inter);
 
         setSky("Rain");
 
+        let max = 0;
+        let drop_width = 1;
+
+        switch (desc) {
+
+            case "light rain": max = 200; break;
+            case "moderate rain": max = 400; break;
+            case "heavy intense rain": max = 650; drop_width = 2; break;
+
+        }
+
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
-        const maxDrops = 500;
         const drops = [];
 
         let wind = -1;
         let angle = (wind !== 0) ? wind / 20 : 0;
 
-        for (let i = 0; i < maxDrops; i++) {
+        for (let i = 0; i < max; i++) {
 
             drops.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 length: Math.random() * 20 + 10,
                 speed: Math.random() * 2 + 4,
-                width: Math.random() * 2 + 1,
+                width: Math.random() * 2 + drop_width,
                 angle: Math.random() * Math.PI
             });
 
@@ -47,7 +57,6 @@ export const BackgroundProvider = ({ children }) => {
     const addSnow = () => {
 
         if (inter) clearInterval(inter);
-
         setSky("Snow");
 
         canvas.width = window.innerWidth;
@@ -75,8 +84,8 @@ export const BackgroundProvider = ({ children }) => {
 
     const addThunderstorm = () => {
 
-        addRain();
         setSky("Thunderstorm");
+        addRain("heavy intense rain");
 
         const sky = document.getElementById("sky");
         const tsInterval = setInterval(() => gsap.to(sky, { fill: "#f0f0f0", duration: 0.1, repeat: 3, yoyo: true }), 5000);
@@ -86,6 +95,8 @@ export const BackgroundProvider = ({ children }) => {
 
     const setSky = (type) => {
 
+        resetCanvas();
+        
         const sky = document.getElementById("sky");
 
         switch (type) {
@@ -128,11 +139,25 @@ export const BackgroundProvider = ({ children }) => {
 
     }
 
-    const clearCanvas = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const resetCanvas = () => {
+
+        cancelAnimationFrame(animation);
+        clearInterval(inter);
+
+        if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (canvas) {
+
+            canvas.style.transform = '';
+            canvas.style.transition = '';
+
+        }
+
+    };
 
     function drawWeather(type, array, angle, wind) {
 
-        clearCanvas();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
     
         if (type === "rain") {
 
@@ -180,11 +205,19 @@ export const BackgroundProvider = ({ children }) => {
 
         }
     
-        requestAnimationFrame(() => drawWeather(type, array, angle, wind));
+        const rainFrame = requestAnimationFrame(() => drawWeather(type, array, angle, wind));
+        setAnimation(rainFrame);
 
     }
 
-    useEffect(() => { return () => (inter) && clearInterval(inter); }, [ inter ]);
+    // useEffect(() => { 
+
+    //     return () => { 
+    //         (inter) && clearInterval(inter); 
+    //         (animation) && cancelAnimationFrame(animation);
+    //     } 
+        
+    // }, [ inter, animation ]);
 
     const context = {
         addRain,
@@ -194,7 +227,8 @@ export const BackgroundProvider = ({ children }) => {
         setWind,
         setBackground,
         setCanvas,
-        setCtx
+        setCtx,
+        resetCanvas
     }
 
     return (
