@@ -1,32 +1,46 @@
 .search_spacer {
     display: flex;
-    flex-direction: row;
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 40px;
+    top: 40px;
     z-index: 5;
+    width: fit-content;
+    height: 36px;
+}
+
+.search_spacer form {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
 }
 
 .search_spacer input {
     outline: none;
     border: 0;
-    display: inline-flex;
+    display: flex;
     height: 36px;
-    padding: 0 5px;
+    padding: 0 7px;
     margin-right: 5px;
     font-weight: bold;
     font-family: "Verdana";
+    box-sizing: border-box;
+    border-radius: 5px;
 }
 
 .search_spacer button {
-    display: inline-flex;
-    padding: 10px;
-    background: rgb(58, 83, 107);
+    display: flex;
+    padding: 8px;
+    background: #343434;
     color: white;
     font-family: "Verdana";
-    letter-spacing: 1px;
-    font-weight: bold;
     border: 0;
+    outline: none;
+    width: 46px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 .search_spacer button:hover {

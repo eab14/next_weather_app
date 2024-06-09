@@ -19,19 +19,22 @@ export const BackgroundProvider = ({ children }) => {
 
         setSky("Rain");
 
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
         let max = 0;
         let drop_width = 1;
 
         switch (desc) {
 
-            case "light rain": max = 200; break;
-            case "moderate rain": max = 400; break;
-            case "heavy intense rain": max = 650; drop_width = 2; break;
+            case "light rain": max = parseInt(canvas.width / 15); break;
+            case "moderate rain": max = max = parseInt(canvas.width / 10); break;
+            case "heavy intensity rain": max = parseInt(canvas.width / 5); drop_width = 2; break;
+            case "very heavy rain": max = max = parseInt(canvas.width / 4); drop_width = 2; break;
+            case "extreme rain": max = max = parseInt(canvas.width / 3); drop_width = 2;
 
         }
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
         const drops = [];
 
         let wind = -1;
@@ -85,7 +88,7 @@ export const BackgroundProvider = ({ children }) => {
     const addThunderstorm = () => {
 
         setSky("Thunderstorm");
-        addRain("heavy intense rain");
+        addRain("heavy intensity rain");
 
         const sky = document.getElementById("sky");
         const tsInterval = setInterval(() => gsap.to(sky, { fill: "#f0f0f0", duration: 0.1, repeat: 3, yoyo: true }), 5000);
@@ -115,7 +118,26 @@ export const BackgroundProvider = ({ children }) => {
         }
 
     }
+
+    const setDaylight = (time, sunrise, sunset, timezone) => {
+
+        let offset = 14400;
+        time = time + (offset + timezone);
+        sunrise = sunrise + (offset + timezone);
+        sunset = sunset + (offset + timezone);
+
+        console.log(new Date(time * 1000))
+        console.log(new Date(sunrise * 1000))
+        console.log(new Date(sunset * 1000))
+
+        const sky = document.getElementById("sky");
+        sky.style.opacity = (time >= sunrise && time < sunset) ? 1 : 0.2;
+
+    }
+
     const setWind = (speed) => {
+
+        resetWind();
 
         let km = speed * 3.2;
         
@@ -126,21 +148,28 @@ export const BackgroundProvider = ({ children }) => {
         if (km >= 10 && km < 20) { init = -1; offset = -2; }
         else if (km >= 20 && km < 30) { init = -2; offset = -4; delay = 0.45; }
         else if (km >= 30 && km < 45) { init = -1; offset = -7; delay = 0.4; }
-        else if (km >= 45) { init = -1; offset = -10; delay = 0.35; }
+        else if (km >= 45) { init = -4; offset = -12; delay = 0.35; }
 
         const trees = document.querySelectorAll(".tree");
 
         trees.forEach((tree) => {
 
-            gsap.to(tree, { rotate: init, transformOrigin: "50%, 100%", duration: 0.4 })
-            gsap.to(tree, { rotate: offset, transformOrigin: "50%, 100%", duration: 0.4, yoyo: true, repeat: -1 })
+            gsap.to(tree, { rotate: init + Math.random(), transformOrigin: "50%, 100%", duration: 0.4 + (Math.random() / 2) })
+            gsap.to(tree, { rotate: offset + Math.random(), transformOrigin: "50%, 100%", duration: 0.4 + (Math.random() / 2), yoyo: true, repeat: -1 })
 
         })
 
     }
 
+    const resetWind = () => {
+
+        const trees = document.querySelectorAll(".tree");
+        trees.forEach((tree) => { gsap.to(tree, { rotate: 0, yoyo: false, repeat: 0 }) });
+    }
+
     const resetCanvas = () => {
 
+        resetWind();
         cancelAnimationFrame(animation);
         clearInterval(inter);
 
@@ -210,15 +239,6 @@ export const BackgroundProvider = ({ children }) => {
 
     }
 
-    // useEffect(() => { 
-
-    //     return () => { 
-    //         (inter) && clearInterval(inter); 
-    //         (animation) && cancelAnimationFrame(animation);
-    //     } 
-        
-    // }, [ inter, animation ]);
-
     const context = {
         addRain,
         addSnow,
@@ -228,7 +248,8 @@ export const BackgroundProvider = ({ children }) => {
         setBackground,
         setCanvas,
         setCtx,
-        resetCanvas
+        resetCanvas,
+        setDaylight
     }
 
     return (

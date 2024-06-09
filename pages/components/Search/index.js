@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { useWeather } from '@/context/WeatherContext';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 import styles from './Search.module.css';
 
 const Search = () => {
@@ -16,7 +20,7 @@ const Search = () => {
 
             <form onSubmit={handleSubmit}>
                 <input type="search" placeholder="Enter city..." value={search} onChange={handleChange} />
-                <button type="submit">Search</button>
+                <button type="submit"><FontAwesomeIcon icon={faSearch} /></button>
             </form>
 
         </div>
