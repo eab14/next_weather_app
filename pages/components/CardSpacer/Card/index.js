@@ -4,7 +4,7 @@ const Card = (props) => {
 
     return (
     
-        <div className={styles.card}>
+        <div className={props.selected ? `${styles.card + " " + styles.selected}` : styles.card}>
 
             { props.city && <h3>{props.city}</h3> }
             { props.icon && <img src={`http://openweathermap.org/img/wn/${props.icon}@2x.png`} /> }

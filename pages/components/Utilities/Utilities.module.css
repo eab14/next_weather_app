@@ -1,0 +1,53 @@
+.utility_spacer {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    top: 40px;
+    left: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.button_spacer .display_spacer {
+    position: absolute;
+    width: 400px;
+    top: calc(36px + 12px);
+    height: 200px;
+    background: linear-gradient(#a4a4a4 60%, #888);
+    border-radius: 7px;
+    border: 2px solid #b4b4b4;
+}
+
+.utility_spacer .button_spacer {
+    position: relative;
+    width: 50px;
+    height: 36px;
+    display: flex;
+    z-index: 9;
+    margin-right: 14px;
+}
+
+.button_spacer .button_accent {
+    position: absolute;
+    bottom: -8px;
+    left: 4px;
+    width: calc(100% - 8px);
+    border-top: 4px solid rgb(92, 135, 155);
+    border-radius: 2px;
+}
+
+.button_spacer button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 36px;
+    background: linear-gradient(#343434 60%, #232323);
+    border: 2px solid #444;
+    outline: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #f4f4f4;
+}
+
+.button_spacer button:hover { cursor: pointer; }

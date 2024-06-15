@@ -21,29 +21,30 @@
     display: flex;
     height: 36px;
     padding: 0 7px;
-    margin-right: 5px;
     font-weight: bold;
     font-family: "Verdana";
     box-sizing: border-box;
     border-radius: 5px;
+    border: 2px solid #444;
 }
 
 .search_spacer button {
     display: flex;
-    padding: 8px;
-    background: #343434;
-    color: white;
-    font-family: "Verdana";
-    border: 0;
-    outline: none;
-    width: 46px;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 36px;
+    background: linear-gradient(#343434 60%, #232323);
+    border: 2px solid #444;
+    outline: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 18px;
+    color: #f4f4f4;
 }
 
-.search_spacer button:hover {
-    opacity: 0.8;
-    cursor: pointer;
+.search_spacer .search_accent {
+    margin: 0 5px;
+
 }
+
+.search_spacer button:hover { cursor: pointer; }

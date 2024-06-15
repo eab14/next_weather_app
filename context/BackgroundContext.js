@@ -126,10 +126,6 @@ export const BackgroundProvider = ({ children }) => {
         sunrise = sunrise + (offset + timezone);
         sunset = sunset + (offset + timezone);
 
-        console.log(new Date(time * 1000))
-        console.log(new Date(sunrise * 1000))
-        console.log(new Date(sunset * 1000))
-
         const sky = document.getElementById("sky");
         sky.style.opacity = (time >= sunrise && time < sunset) ? 1 : 0.2;
 
@@ -140,24 +136,18 @@ export const BackgroundProvider = ({ children }) => {
         resetWind();
 
         let km = speed * 3.2;
-        
-        let init = 0;
         let offset = 0;
-        let delay = 0.5;
+        let duration = 0.4;
 
-        if (km >= 10 && km < 20) { init = -1; offset = -2; }
-        else if (km >= 20 && km < 30) { init = -2; offset = -4; delay = 0.45; }
-        else if (km >= 30 && km < 45) { init = -1; offset = -7; delay = 0.4; }
-        else if (km >= 45) { init = -4; offset = -12; delay = 0.35; }
+        if (km >= 10 && km < 20) offset = -2;
+        else if (km >= 20 && km < 30) offset = -4;
+        else if (km >= 30 && km < 45) { offset = -7; duration = 0.38 }
+        else if (km >= 45) { offset = -12; duration = 0.35; }
 
         const trees = document.querySelectorAll(".tree");
 
-        trees.forEach((tree) => {
-
-            gsap.to(tree, { rotate: init + Math.random(), transformOrigin: "50%, 100%", duration: 0.4 + (Math.random() / 2) })
-            gsap.to(tree, { rotate: offset + Math.random(), transformOrigin: "50%, 100%", duration: 0.4 + (Math.random() / 2), yoyo: true, repeat: -1 })
-
-        })
+        trees.forEach((tree) => 
+            gsap.to(tree, { rotate: offset + Math.random(), transformOrigin: "50%, 100%", duration: duration + (Math.random() / 2), yoyo: true, repeat: -1 }));
 
     }
 

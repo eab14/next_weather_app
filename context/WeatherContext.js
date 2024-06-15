@@ -22,6 +22,7 @@ export const WeatherProvider = ({ children }) => {
 
             data = await response.json();
             setWeatherData(data);
+            console.log(data)
 
         }
 
@@ -37,6 +38,7 @@ export const WeatherProvider = ({ children }) => {
 
             data = await response.json();
             setWeatherData(data);
+            console.log(data)
 
         }
 

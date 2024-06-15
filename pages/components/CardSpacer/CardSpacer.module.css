@@ -1,11 +1,15 @@
 .card_spacer {
     position: absolute;
+    display: flex;
     width: 400px !important;
     height: fit-content;
     right: 40px;
     bottom: 40px;
     font-family: "Verdana", sans-serif;
     z-index: 11;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .center {   

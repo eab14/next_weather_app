@@ -1,6 +1,6 @@
 import { useWeather } from '@/context/WeatherContext';
 import styles from './CardSpacer.module.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import Card from "./Card";
 
 const CardSpacer = () => {
@@ -14,17 +14,24 @@ const CardSpacer = () => {
 
                     <Container className={styles.card_spacer}>
                         
-                        <Col xs={12}>
+                        <Card 
+                            city={`${weatherData.name}, ${weatherData.sys.country}`} 
+                            icon={weatherData.weather[0].icon} 
+                            temp={weatherData.main.temp}
+                            selected={true}
+                        />
 
-                            <Row>
-                                <Card 
-                                    city={`${weatherData.name}, ${weatherData.sys.country}`} 
-                                    icon={weatherData.weather[0].icon} 
-                                    temp={weatherData.main.temp}
-                                />
-                            </Row>
+                        <Card 
+                            city={`${weatherData.name}, ${weatherData.sys.country}`} 
+                            icon={weatherData.weather[0].icon} 
+                            temp={weatherData.main.temp}
+                        />
 
-                        </Col>
+                        <Card 
+                            city={`${weatherData.name}, ${weatherData.sys.country}`} 
+                            icon={weatherData.weather[0].icon} 
+                            temp={weatherData.main.temp}
+                        />
 
                     </Container>
 

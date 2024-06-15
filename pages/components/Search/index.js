@@ -20,6 +20,7 @@ const Search = () => {
 
             <form onSubmit={handleSubmit}>
                 <input type="search" placeholder="Enter city..." value={search} onChange={handleChange} />
+                <span className={styles.search_accent}></span>
                 <button type="submit"><FontAwesomeIcon icon={faSearch} /></button>
             </form>
 
