@@ -1,0 +1,63 @@
+.forecast_spacer {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+}
+
+.forecast_spacer .item_spacer {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.forecast_item {
+    background: linear-gradient(#a4a4a4 60%, #888);
+    border: 2px solid #b4b4b4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 100%;
+    width: 100px;
+    margin-right: 10px;
+}
+
+.button_spacer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    left: 25px;
+}
+
+.nav_chevron {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 15px;
+    margin-right: 10px;
+    color: #f4f4f4;
+    font-size: 20px;
+}
+
+.button_spacer button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 24px;
+    background: linear-gradient(#343434 60%, #232323);
+    border: 2px solid #444;
+    outline: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-right: 10px;
+    color: #f4f4f4;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    z-index: 9;
+}
+
+.button_spacer button:hover { cursor: pointer; }

@@ -1,5 +1,5 @@
 import Background from "./components/Background";
-import Information from "./components/Information";
+import Forecast from "./components/Forecast";
 import Search from "./components/Search";
 import CardSpacer from "./components/CardSpacer";
 import Utilities from "./components/Utilities";
@@ -15,7 +15,7 @@ export default function Home() {
         <WeatherProvider>
           <Background />
           <Search />
-          <Information />
+          <Forecast />
           <CardSpacer />
           <Utilities />
         </WeatherProvider>

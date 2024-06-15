@@ -8,7 +8,7 @@
     flex-direction: row;
 }
 
-.button_spacer .display_spacer {
+.display_spacer {
     position: absolute;
     width: 400px;
     top: calc(36px + 12px);
