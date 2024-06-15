@@ -9,7 +9,6 @@ const ForecastItem = (props) => {
     return (
 
         <>
-        { console.log(props.data) }
         { weatherData && 
 
             <div className={styles.forecast_item}>

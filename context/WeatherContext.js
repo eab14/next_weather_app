@@ -45,6 +45,8 @@ export const WeatherProvider = ({ children }) => {
             data.hourly = data2.hourly;
             data.daily = data2.daily;
 
+            console.log(data);
+
             setWeatherData(data);
 
         }

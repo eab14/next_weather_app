@@ -12,8 +12,44 @@
     align-items: flex-end;
 }
 
-.center {   
+.card_pagination {
+    height: 38px;
+    width: 400px;
+    flex-direction: row;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.card_pagination span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 24px;
+    background: red;
+    margin-right: 5px;
+    box-sizing: border-box;
+    background: linear-gradient(#343434 60%, #232323);
+    border: 2px solid #444;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #d4d4d4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.card_pagination span:hover {
+    cursor: pointer;
+}
+
+.card_pagination .selected {
+    height: 30px;
+    width: 38px;
+    background: linear-gradient(#555 60%, #333);
+    border: 2px solid #666;
+}
+
+.card_pagination span:last-child {
+    margin-right: 0;
 }
