@@ -12,6 +12,7 @@
 }
 
 .forecast_item {
+    position: relative;
     background: linear-gradient(#a4a4a4 60%, #888);
     border: 2px solid #b4b4b4;
     box-sizing: border-box;
@@ -19,6 +20,10 @@
     height: 100%;
     width: 100px;
     margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .button_spacer {
@@ -61,3 +66,30 @@
 }
 
 .button_spacer button:hover { cursor: pointer; }
+
+.forecast_item h2 {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.forecast_item img {
+    position: relative;
+    height: 60px;
+    width: 60px;
+}
+
+.forecast_item p {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    bottom: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

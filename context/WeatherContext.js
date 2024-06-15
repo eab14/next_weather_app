@@ -10,10 +10,29 @@ export const WeatherProvider = ({ children }) => {
     const { setSky, setWind, addRain, addThunderstorm, setDaylight } = useBG();
 
     const [ weatherData, setWeatherData ] = useState(null);
+    const [ offset, setOffset ] = useState(14400);
+
+    const getOneCall = async (lat, lon) => await new Promise( async (resolve, reject) => {
+
+        let data = null;
+
+        const response = await fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=c86496cf5e7633a638dc952a412796f3&units=metric`)
+
+        if (response.ok) {
+            
+            data = await response.json();
+            resolve(data);
+
+        }
+
+        else reject(console.log("Error - One Call API call failed..."));
+
+    });
 
     const getGeo = useCallback( async (url, type) => {
 
         let data = null;
+        let data2 = null;
 
         const position = await new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject));
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=c86496cf5e7633a638dc952a412796f3&units=metric`);
@@ -21,8 +40,12 @@ export const WeatherProvider = ({ children }) => {
         if (response.ok) {
 
             data = await response.json();
+            data2 = await getOneCall(position.coords.latitude, position.coords.longitude);
+
+            data.hourly = data2.hourly;
+            data.daily = data2.daily;
+
             setWeatherData(data);
-            console.log(data)
 
         }
 
@@ -31,14 +54,20 @@ export const WeatherProvider = ({ children }) => {
     const getBySearch = useCallback( async (input) => {
 
         let data = null;
+        let data2 = null;
 
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=c86496cf5e7633a638dc952a412796f3&units=metric`);
 
         if (response.ok) {
 
             data = await response.json();
+
+            data2 = await getOneCall(data.coord.lat, data.coord.lon);
+
+            data.hourly = data2.hourly;
+            data.daily = data2.daily;
+
             setWeatherData(data);
-            console.log(data)
 
         }
 
@@ -81,7 +110,8 @@ export const WeatherProvider = ({ children }) => {
 
     const context = {
         weatherData,
-        getBySearch
+        getBySearch, 
+        offset
     }
 
     return (

@@ -1,8 +1,33 @@
 import styles from "../Forecast.module.css";
 
-const ForecastItem = () => {
+import { useWeather } from "@/context/WeatherContext";
 
-    return (<div className={styles.forecast_item}></div>)
+const ForecastItem = (props) => {
+
+    const { offset, weatherData } = useWeather();
+
+    return (
+
+        <>
+        { console.log(props.data) }
+        { weatherData && 
+
+            <div className={styles.forecast_item}>
+
+                { props.type === "daily" && (
+                    <>
+                    <h2>{new Date((props.data.dt + (offset + weatherData.timezone)) * 1000).toLocaleString("en-us", { month: "short", day: "numeric" }) }</h2>
+                    <img src={`http://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`} />
+                    <p>{Math.round(props.data.temp.day) + "° C"}</p>
+                    </>
+                )}  
+
+            </div>
+
+        }
+        </>
+
+    );
 
 }
 
