@@ -27,7 +27,6 @@
     align-items: center;
     width: 30px;
     height: 24px;
-    background: red;
     margin-right: 5px;
     box-sizing: border-box;
     background: linear-gradient(#343434 60%, #232323);
@@ -41,6 +40,11 @@
 
 .card_pagination span:hover {
     cursor: pointer;
+}
+
+.card_pagination .pagination_arrow {
+    background: linear-gradient(#141414 60%, #232323);
+    border: 2px solid #343434;
 }
 
 .card_pagination .selected {

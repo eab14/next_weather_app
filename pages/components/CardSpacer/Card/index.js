@@ -1,10 +1,21 @@
+import { useEffect, useRef } from 'react';
 import styles from './Card.module.css';
+import { gsap } from 'gsap';
 
 const Card = (props) => {
 
+    const cardRef = useRef();
+
+    useEffect(() => {
+
+        if (props.selected) gsap.to(cardRef.current, { duration: 0.4, background: "linear-gradient(#343434 60%, #232323)", width: "110%", height: 90 })
+        else gsap.to(cardRef.current, { duration: 0.4, background: "linear-gradient(#b4b4b4 60%, #888)", width: "100%", height: 80 })
+
+    }, [ props.selected ])
+
     return (
     
-        <div className={props.selected ? `${styles.card + " " + styles.selected}` : styles.card} onClick={props.onClick}>
+        <div ref={cardRef} className={props.selected ? `${styles.card + " " + styles.selected}` : styles.card} onClick={props.onClick}>
 
             <div className={styles.icon_spacer}>
             { props.conditions && <h4>{props.conditions}</h4> }

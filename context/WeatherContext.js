@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useCallback, useEffect } from "rea
 import { useBG } from "./BackgroundContext";
 
 import { useAtom } from "jotai";
-import { selectedItem, weatherArray } from "./atomStates";
+import { searchArray, selectedItem, selectedPage, weatherArray } from "./atomState";
 
 const WeatherContext = createContext();
 
@@ -16,6 +16,8 @@ export const WeatherProvider = ({ children }) => {
     const [ offset, setOffset ] = useState(14400);
     const [ weatherList, setWeatherList ] = useAtom(weatherArray);
     const [ selected, setSelected ] = useAtom(selectedItem);
+    const [ searchList, setSearchList ] = useAtom(searchArray);
+    const [ page, setPage ] = useAtom(selectedPage);
 
     const getOneCall = async (lat, lon) => await new Promise( async (resolve, reject) => {
 
@@ -50,7 +52,9 @@ export const WeatherProvider = ({ children }) => {
             data.hourly = data2.hourly;
             data.daily = data2.daily;
 
+            
             setWeatherList((prev) => [ ...new Set([ ...prev, data ]) ]);
+            setSearchList((prev) => [ ...new Set([ ...prev, `${data.name}, ${data.sys.country}` ]) ]);
             setWeatherData(data);
 
         }
@@ -74,6 +78,7 @@ export const WeatherProvider = ({ children }) => {
             data.daily = data2.daily;
 
             setWeatherList((prev) => [ ...new Set([ ...prev, data ]) ]);
+            setSearchList((prev) => [ ...new Set([ ...prev, input ]) ]);
             setWeatherData(data);
 
         }
@@ -111,16 +116,22 @@ export const WeatherProvider = ({ children }) => {
         async function fetchData() { await getGeo(); }
         fetchData();
 
-    }, [])
-
-    useEffect(() => { (weatherData) && setWeather(); }, [ weatherData ]);
+    }, []);
 
     useEffect(() => {
 
-        const index = (weatherList) ? weatherList.findIndex(item => item.id === weatherData.id) : null;
-        setSelected(index);
+        if (weatherList.length > 0) {
 
-    }, [ weatherList ])
+            const index = (weatherList) ? weatherList.findIndex(item => item.id === weatherData.id) : null;
+            setSelected(index);
+            setPage(Math.ceil((index + 1) / 3));
+
+        }
+
+    }, [ weatherList ]);
+
+    useEffect(() => { (weatherData) && setWeather(); }, [ weatherData ]);
+    useEffect(() => { console.log(page) }, [ page ])
 
     const context = {
         weatherData,
