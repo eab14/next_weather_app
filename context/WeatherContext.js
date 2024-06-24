@@ -51,7 +51,6 @@ export const WeatherProvider = ({ children }) => {
 
             data.hourly = data2.hourly;
             data.daily = data2.daily;
-
             
             setWeatherList((prev) => [ ...new Set([ ...prev, data ]) ]);
             setSearchList((prev) => [ ...new Set([ ...prev, `${data.name}, ${data.sys.country}` ]) ]);
@@ -71,7 +70,6 @@ export const WeatherProvider = ({ children }) => {
         if (response.ok) {
 
             data = await response.json();
-
             data2 = await getOneCall(data.coord.lat, data.coord.lon);
 
             data.hourly = data2.hourly;
@@ -120,7 +118,7 @@ export const WeatherProvider = ({ children }) => {
 
     useEffect(() => {
 
-        if (weatherList.length > 0) {
+        if (weatherList.length > 0 && weatherData) {
 
             const index = (weatherList) ? weatherList.findIndex(item => item.id === weatherData.id) : null;
             setSelected(index);
@@ -128,10 +126,9 @@ export const WeatherProvider = ({ children }) => {
 
         }
 
-    }, [ weatherList ]);
+    }, [ weatherList, weatherData ]);
 
     useEffect(() => { (weatherData) && setWeather(); }, [ weatherData ]);
-    useEffect(() => { console.log(page) }, [ page ])
 
     const context = {
         weatherData,

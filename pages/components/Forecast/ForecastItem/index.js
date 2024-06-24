@@ -19,7 +19,17 @@ const ForecastItem = (props) => {
                     <img src={`http://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`} />
                     <p>{Math.round(props.data.temp.day) + "° C"}</p>
                     </>
-                )}  
+                )}
+
+                { props.type === "hourly" && (
+
+                    <>
+                    <h2>{new Date((props.data.dt + (offset + weatherData.timezone)) * 1000).toLocaleString("en-us", { hour: "numeric", hour12: true, minute: "numeric" }) }</h2>
+                    <img src={`http://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`} />
+                    <p>{Math.round(props.data.temp) + "° C"}</p>
+                    </>
+
+                )}
 
             </div>
 

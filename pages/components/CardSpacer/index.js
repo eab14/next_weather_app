@@ -3,6 +3,7 @@ import styles from './CardSpacer.module.css';
 import Card from "./Card";
 
 import { Container } from 'react-bootstrap';
+import { gsap } from 'gsap';
 
 import { useWeather } from '@/context/WeatherContext';
 import { useAtom } from 'jotai';
@@ -10,22 +11,46 @@ import { weatherArray, selectedItem, selectedPage } from '@/context/atomState';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
+import { createRef, useEffect, useRef, useState } from 'react';
 
 const ITEMS = 3; 
 
 const CardSpacer = () => {
 
+    const cardRefs = useRef([]);
+
     const { weatherData, setWeatherData } = useWeather();
+
     const [ weatherList ] = useAtom(weatherArray);
     const [ selected, setSelected ] = useAtom(selectedItem);
     const [ page, setPage ] = useAtom(selectedPage);
+
+    const [ pageArray, setPageArray ] = useState([]);
 
     const totalPages = Math.ceil(weatherList.length / ITEMS);
 
     const handlePageClick = (pageNumber) => setPage(pageNumber);
 
     useEffect(() => setWeatherData(weatherList[selected]), [ selected ]);
+    useEffect(() => { cardRefs.current = Array.from({ length: ITEMS }, () => createRef()); }, []);
+
+    useEffect(() => {
+
+        let offset = 0.1;
+
+        cardRefs.current.forEach((ref, index) => {
+
+            if (ref.current) {
+
+                gsap.to(ref.current, { opacity: 0, left: -40, duration: 0 });
+                gsap.to(ref.current, { opacity: 1, left: 0, delay: offset, duration: 0.3 });
+                offset += 0.14;
+
+            }
+
+        });
+
+    }, [ page, weatherList ])
 
     return (
         <>
@@ -38,6 +63,7 @@ const CardSpacer = () => {
                             weatherList.slice((page - 1) * ITEMS, page * ITEMS).map((data, index) => 
                                 <Card
                                     key={index}
+                                    ref={cardRefs.current[index]} 
                                     city={`${data.name}, ${data.sys.country}`} 
                                     icon={data.weather[0].icon} 
                                     temp={data.main.temp}
