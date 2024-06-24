@@ -2,11 +2,11 @@
     position: relative;
     width: 100%;
     height: 80px;
-    background: linear-gradient(#a4a4a4 60%, #888);
+    background: linear-gradient(#b4b4b4 60%, #888);
     border-radius: 5px;
     margin-bottom: 7px;
     box-sizing: border-box;
-    border: 2px solid #b4b4b4;
+    border: 2px solid #999;
     /* backdrop-filter: blur(10px); */
 }
 

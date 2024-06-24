@@ -13,8 +13,8 @@
 
 .forecast_item {
     position: relative;
-    background: linear-gradient(#a4a4a4 60%, #888);
-    border: 2px solid #b4b4b4;
+    background: linear-gradient(#b4b4b4 60%, #888);
+    border: 2px solid #999;
     box-sizing: border-box;
     border-radius: 5px;
     height: 100%;
@@ -24,6 +24,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: 9;
 }
 
 .button_spacer {

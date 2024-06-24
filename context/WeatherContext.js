@@ -1,6 +1,9 @@
 import { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { useBG } from "./BackgroundContext";
 
+import { useAtom } from "jotai";
+import { selectedItem, weatherArray } from "./atomStates";
+
 const WeatherContext = createContext();
 
 export const useWeather = () => useContext(WeatherContext);
@@ -11,6 +14,8 @@ export const WeatherProvider = ({ children }) => {
 
     const [ weatherData, setWeatherData ] = useState(null);
     const [ offset, setOffset ] = useState(14400);
+    const [ weatherList, setWeatherList ] = useAtom(weatherArray);
+    const [ selected, setSelected ] = useAtom(selectedItem);
 
     const getOneCall = async (lat, lon) => await new Promise( async (resolve, reject) => {
 
@@ -45,8 +50,7 @@ export const WeatherProvider = ({ children }) => {
             data.hourly = data2.hourly;
             data.daily = data2.daily;
 
-            console.log(data);
-
+            setWeatherList((prev) => [ ...new Set([ ...prev, data ]) ]);
             setWeatherData(data);
 
         }
@@ -69,6 +73,7 @@ export const WeatherProvider = ({ children }) => {
             data.hourly = data2.hourly;
             data.daily = data2.daily;
 
+            setWeatherList((prev) => [ ...new Set([ ...prev, data ]) ]);
             setWeatherData(data);
 
         }
@@ -108,11 +113,19 @@ export const WeatherProvider = ({ children }) => {
 
     }, [])
 
-    useEffect(() => { (weatherData) && setWeather() }, [ weatherData ]);
+    useEffect(() => { (weatherData) && setWeather(); }, [ weatherData ]);
+
+    useEffect(() => {
+
+        const index = (weatherList) ? weatherList.findIndex(item => item.id === weatherData.id) : null;
+        setSelected(index);
+
+    }, [ weatherList ])
 
     const context = {
         weatherData,
-        getBySearch, 
+        setWeatherData,
+        getBySearch,
         offset
     }
 

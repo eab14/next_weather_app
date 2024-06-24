@@ -13,11 +13,13 @@ export default function Home() {
     
       <BackgroundProvider>
         <WeatherProvider>
+
           <Background />
           <Search />
           <Forecast />
           <CardSpacer />
           <Utilities />
+          
         </WeatherProvider>
       </BackgroundProvider>
   );
