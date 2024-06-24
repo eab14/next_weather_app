@@ -11,6 +11,18 @@
     margin-bottom: 10px;
 }
 
+.item_spacer article {
+    display: flex;
+    flex-direction: row;
+    width: 545px;
+    overflow: hidden;
+}
+
+.item_spacer article .slider_spacer {
+    display: flex;
+    flex-direction: row;
+}
+
 .forecast_item {
     position: relative;
     background: linear-gradient(#b4b4b4 60%, #888);
@@ -18,7 +30,7 @@
     box-sizing: border-box;
     border-radius: 5px;
     height: 100%;
-    width: 100px;
+    min-width: 100px;
     margin-right: 10px;
     display: flex;
     justify-content: center;

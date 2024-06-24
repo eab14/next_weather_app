@@ -55,9 +55,6 @@ const Display = (props) => {
 
                 )
 
-                
-                
-
             }
 
         </div>

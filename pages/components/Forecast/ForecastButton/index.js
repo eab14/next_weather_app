@@ -18,7 +18,7 @@ const ForecastButton = (props) => {
 
     }, [ props.selected ])
 
-    return (<button ref={buttonRef} className={props.selected && styles.selected} onClick={props.onClick}>{props.text}</button>);
+    return (<button ref={buttonRef} className={props.selected ? styles.selected : ""} onClick={props.onClick}>{props.text}</button>);
 
 }
 

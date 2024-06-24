@@ -7,23 +7,75 @@ import ForecastItem from "./ForecastItem";
 import ForecastButton from "./ForecastButton";
 
 import { useWeather } from "@/context/WeatherContext";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import { gsap } from "gsap";
 
 const Forecast = () => {
 
+    const sliderRef = useRef(null);
+
     const { weatherData } = useWeather();
     const [ selected, setSelected ] = useState("daily");
+    const [ dailySelected, setDailySelected ] = useState(0);
+    const [ hourlySelected, setHourlySelected ] = useState(0);
+
+    const DAILY_LIMIT = 7;
+    const HOURLY_LIMIT = 12;
+    const ITEM_LIMIT = 5;
+
+    const shiftNext = () => { 
+        
+        if ((dailySelected < DAILY_LIMIT - ITEM_LIMIT) && selected === "daily") setDailySelected((prev) => prev + 1);
+        if ((hourlySelected < HOURLY_LIMIT - ITEM_LIMIT) && selected === "hourly") { console.log("?"); setHourlySelected((prev) => prev + 1); }
+    
+    }
+
+    const shiftPrev = () => {
+
+        if (dailySelected > 0 && selected === "daily") setDailySelected((prev) => prev - 1);
+        if (hourlySelected > 0 && selected === "hourly") setHourlySelected((prev) => prev - 1);
+    
+    }
+
+    useEffect(() => {
+
+        if (sliderRef.current && selected === "daily") gsap.to(sliderRef.current, { x: (dailySelected * -110), duration: 0.4 });
+
+    }, [ dailySelected ])
+
+    useEffect(() => {
+
+        if (sliderRef.current && selected === "hourly") gsap.to(sliderRef.current, { x: (hourlySelected * -110), duration: 0.4 });
+
+    }, [ hourlySelected ])
+
+    useEffect(() => {
+
+        setDailySelected(0); 
+        setHourlySelected(0);
+        gsap.to(sliderRef.current, { x: 0, duration: 0.4 })
+
+    }, [ selected, weatherData ])
 
     return (
+
         <div className={styles.forecast_spacer}>
 
             <div className={styles.item_spacer}>
-                <span className={styles.nav_chevron}><FontAwesomeIcon icon={faChevronLeft} /></span>
+                <span className={styles.nav_chevron}><FontAwesomeIcon icon={faChevronLeft} onClick={shiftPrev} /></span>
 
-                { (weatherData && selected === "daily") && <>{ weatherData.daily.slice(1, 6).map((data, index) => <ForecastItem key={index} data={data} type={selected} />)}</> }
-                { (weatherData && selected === "hourly") && <>{ weatherData.hourly.slice(1, 6).map((data, index) => <ForecastItem key={index} data={data} type={selected} />)}</> }
+                <article>
 
-                <span className={styles.nav_chevron}><FontAwesomeIcon icon={faChevronRight} /></span>
+                    <div ref={sliderRef} className={styles.slider_spacer}>
+
+                    { (weatherData && selected === "daily") && <>{ weatherData.daily.slice(1, DAILY_LIMIT + 1).map((data, index) => <ForecastItem key={index} data={data} type={selected} />)}</> }
+                    { (weatherData && selected === "hourly") && <>{ weatherData.hourly.slice(1, HOURLY_LIMIT + 1).map((data, index) => <ForecastItem key={index} data={data} type={selected} />)}</> }
+
+                    </div>
+
+                </article>
+
+                <span className={styles.nav_chevron}><FontAwesomeIcon icon={faChevronRight} onClick={shiftNext} /></span>
             </div>
 
             <div className={styles.button_spacer}>
@@ -32,6 +84,7 @@ const Forecast = () => {
             </div>
 
         </div>
+
     );
 
 }
