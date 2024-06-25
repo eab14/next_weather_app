@@ -5,9 +5,9 @@ const Button = (props) => {
 
     return (
         <button>
-            { props.for === "temp" && <FontAwesomeIcon icon={faTemperature3} /> }
-            { props.for === "wind" && <FontAwesomeIcon icon={faWind} /> }
-            { props.for === "misc" && <FontAwesomeIcon icon={faEllipsis} /> }
+            { props.for === "temp" && <FontAwesomeIcon icon={faTemperature3} onClick={props.onClick} /> }
+            { props.for === "wind" && <FontAwesomeIcon icon={faWind} onClick={props.onClick} /> }
+            { props.for === "misc" && <FontAwesomeIcon icon={faEllipsis} onClick={props.onClick} /> }
         </button>
     );
 

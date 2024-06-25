@@ -28,7 +28,11 @@ export const BackgroundProvider = ({ children }) => {
         switch (desc) {
 
             case "light rain": max = parseInt(canvas.width / 15); break;
-            case "moderate rain": max = max = parseInt(canvas.width / 10); break;
+            
+            case "moderate rain":
+            case "light intensity shower rain":
+                max = max = parseInt(canvas.width / 10); break;
+
             case "heavy intensity rain": max = parseInt(canvas.width / 5); drop_width = 2; break;
             case "very heavy rain": max = max = parseInt(canvas.width / 4); drop_width = 2; break;
             case "extreme rain": max = max = parseInt(canvas.width / 3); drop_width = 2;

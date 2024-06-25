@@ -1,0 +1,12 @@
+.graphic_spacer {
+    width: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.graphic_spacer svg {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 200px;
+}

@@ -52,6 +52,7 @@
     border-radius: 5px;
     font-size: 18px;
     color: #f4f4f4;
+    z-index: 99;
 }
 
 .button_spacer button:hover { cursor: pointer; }
