@@ -6,7 +6,7 @@ const Card = forwardRef((props, ref) => {
 
     useEffect(() => {
 
-        if (ref.current) {
+        if (ref) {
 
             if (props.selected) gsap.to(ref.current, { duration: 0.4, background: "linear-gradient(#343434 60%, #232323)", width: "110%", height: 90 })
             else gsap.to(ref.current, { duration: 0.4, background: "linear-gradient(#b4b4b4 60%, #888)", width: "100%", height: 80 })

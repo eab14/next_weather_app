@@ -1,3 +1,5 @@
+import { forwardRef } from "react";
+
 export const SVG_forrest = () => {
 
     return(
@@ -147,3 +149,49 @@ export const SVG_forrest = () => {
     );
 
 }
+
+export const SVG_temp = forwardRef((props, ref) => {
+
+    return (
+        
+        <svg ref={ref} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 157 381">
+        <g id="outline">
+            <g>
+            <g>
+                <circle cx="78.5" cy="302.5" r="78.5" fill="#141414" strokeWidth="0"/>
+                <rect x="52.62" y="0" width="51.77" height="274" rx="25.88" ry="25.88" fill="#141414" strokeWidth="0"/>
+            </g>
+            <path d="M104.38,202.9c1.12,25.41,5.12,24.41,22.12,37.41l-22.12-3.8v-33.61Z" fill="#141414" strokeWidth="0"/>
+            <path d="M52.62,204.51c-.12,16.8-1.12,21.8-22.12,35.8l23-3.56s-.87-33.94-.88-32.24Z" fill="#141414" strokeWidth="0"/>
+            </g>
+        </g>
+        <g id="inner">
+            <g>
+            <g>
+                <circle cx="78.5" cy="301.44" r="66.54" fill="#fff" strokeWidth="0"/>
+                <rect x="60.92" y="8.31" width="36" height="244" rx="18" ry="18" fill="#fff" strokeWidth="0"/>
+            </g>
+            <path d="M38.5,248.31l24-2-1.6-37c-.4,17-.4,21-22.4,39Z" fill="#fff" strokeWidth="0"/>
+            <path d="M118.45,248.22l-23.2-2.08,1.6-37q.65,22.17,21.6,39.08Z" fill="#fff" strokeWidth="0"/>
+            </g>
+        </g>
+        <g id="temp_main">
+            <g>
+            <circle cx="78.5" cy="301.31" r="62" fill="#29cae5" strokeWidth="0"/>
+            <rect id="temp" x="65.5" y="12.31" width="27" height="239" rx="13.5" ry="13.5" fill="#29cae5" strokeWidth="0"/>
+            <path d="M40.5,252.31c14.95-10.95,25-22.35,25-33.85l3,27.85s-29.76,7.29-28,6Z" fill="#29cae5" strokeWidth="0"/>
+            <path d="M92.5,219.31c1,19.67,12,23,24,33l-25-1,1-32Z" fill="#29cae5" strokeWidth="0"/>
+            </g>
+        </g>
+        <g id="grid">
+            <line x1="112.41" y1="120.35" x2="136.42" y2="120.35" fill="none" stroke="#343434" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="3"/>
+            <line x1="112.41" y1="30.35" x2="136.42" y2="30.35" fill="none" stroke="#343434" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="3"/>
+            <line x1="112.41" y1="210.35" x2="136.42" y2="210.35" fill="none" stroke="#343434" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="3"/>
+            <line x1="115.85" y1="70.35" x2="132.98" y2="70.35" fill="none" stroke="#343434" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2"/>
+            <line x1="115.85" y1="160.35" x2="132.98" y2="160.35" fill="none" stroke="#343434" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2"/>
+        </g>
+        </svg>
+
+    )
+
+});

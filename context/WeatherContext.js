@@ -51,11 +51,12 @@ export const WeatherProvider = ({ children }) => {
 
             data.hourly = data2.hourly;
             data.daily = data2.daily;
+
+            console.log(data)
             
             setWeatherList((prev) => [ ...new Set([ ...prev, data ]) ]);
             setSearchList((prev) => [ ...new Set([ ...prev, `${data.name}, ${data.sys.country}` ]) ]);
             setWeatherData(data);
-
         }
 
     }, [])
@@ -126,9 +127,9 @@ export const WeatherProvider = ({ children }) => {
 
         }
 
-    }, [ weatherList, weatherData ]);
+        (weatherData) && setWeather();
 
-    useEffect(() => { (weatherData) && setWeather(); }, [ weatherData ]);
+    }, [ weatherList, weatherData ]);
 
     const context = {
         weatherData,
