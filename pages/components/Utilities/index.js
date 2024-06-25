@@ -15,7 +15,6 @@ const Utilities = () => {
                 <div className={styles.button_spacer}>
                     <Button for="temp" onClick={clickHandler} />
                     <span className={styles.button_accent}></span>
-                    <Display for="temp" />
                 </div>
 
                 <div className={styles.button_spacer}>
@@ -25,6 +24,8 @@ const Utilities = () => {
                 <div className={styles.button_spacer}>
                     <Button for="misc" onClick={clickHandler} />
                 </div>
+
+                <Display for="temp" />
 
             </div>
         </Row>

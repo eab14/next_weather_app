@@ -1,0 +1,61 @@
+.graphic_spacer {
+    width: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.graphic_spacer svg {
+    position: relative;
+    display: flex;
+    width: 120px;
+    height: 120px;
+}
+
+.graphic_spacer h2 {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #232323;
+}
+
+.button_spacer {
+    display: flex;
+    min-width: 140px;
+    height: 140px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    margin-top: 5px;
+}
+
+.button_spacer button {
+    position: relative;
+    width: 120px;
+    height: 28px;
+    background: linear-gradient(#343434 60%, #232323);
+    border: 2px solid #444;
+    outline: none;
+    margin-bottom: 5px;
+    color: #f4f4f4;
+    font-size: 9px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 9;
+}
+
+.button_spacer button:hover { cursor: pointer; }
+
+.button_spacer .selected {
+    left: 10px;
+    background: linear-gradient(#555 60%, #333);
+    border: 2px solid #666;
+}

@@ -19,6 +19,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    z-index: 8;
 }
 
 .utility_spacer .button_spacer {
@@ -54,83 +55,3 @@
 }
 
 .button_spacer button:hover { cursor: pointer; }
-
-.display_line {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 36px;
-    border-bottom: 2px solid #a4a4a4;
-    width: calc(100% - 50px);
-    font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-}
-
-.display_line:last-child {
-    border-bottom: none;
-}
-
-.display_line span {
-    margin-right: 20px;
-    font-size: 12px;
-    width: 170px;
-}
-
-.graphic_spacer {
-    width: 200px;
-    display: flex;
-    align-items: center;
-}
-
-.graphic_spacer svg {
-    position: relative;
-    display: flex;
-    width: 120px;
-    height: 120px;
-}
-
-.graphic_spacer h2 {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #232323;
-}
-
-.display_spacer .button_spacer {
-    display: flex;
-    min-width: 140px;
-    height: 140px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    margin-top: 5px;
-}
-
-.display_spacer .button_spacer button {
-    position: relative;
-    width: 120px;
-    height: 28px;
-    background: linear-gradient(#343434 60%, #232323);
-    border: 2px solid #444;
-    outline: none;
-    margin-bottom: 5px;
-    color: #f4f4f4;
-    font-size: 9px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.display_spacer .button_spacer .selected {
-    left: 10px;
-    background: linear-gradient(#555 60%, #333);
-    border: 2px solid #666;
-}
