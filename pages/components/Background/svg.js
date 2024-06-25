@@ -202,55 +202,55 @@ export const SVG_compass = forwardRef((props, ref) => {
         <svg ref={ref} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
         <g id="ring">
             <g opacity="0.97">
-                <path fill="#232323" d="M200.8,53.35c38.46,0,74.63,14.98,101.82,42.18c27.2,27.2,42.18,63.36,42.18,101.82
-                    s-14.98,74.63-42.18,101.82c-27.2,27.2-63.36,42.18-101.82,42.18s-74.63-14.98-101.82-42.18c-27.2-27.2-42.18-63.36-42.18-101.82
-                    s14.98-74.63,42.18-101.82C126.18,68.33,162.34,53.35,200.8,53.35 M200.8,50.35c-81.19,0-147,65.81-147,147s65.81,147,147,147
-                    s147-65.81,147-147S281.99,50.35,200.8,50.35L200.8,50.35z"/>
+                <path fill="#232323" d="M200.8,55.35c37.93,0,73.59,14.77,100.41,41.59s41.59,62.48,41.59,100.41s-14.77,73.59-41.59,100.41
+                    s-62.48,41.59-100.41,41.59s-73.59-14.77-100.41-41.59S58.8,235.28,58.8,197.35s14.77-73.59,41.59-100.41
+                    S162.88,55.35,200.8,55.35 M200.8,50.35c-81.19,0-147,65.81-147,147s65.81,147,147,147s147-65.81,147-147
+                    S281.99,50.35,200.8,50.35L200.8,50.35z"/>
             </g>
         </g>
         <g id="accents">
             
-                <line opacity="0.97" fill="none" stroke="#232323" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="200.9" y1="126" x2="200.9" y2="61.31"/>
+                <line opacity="0.97" fill="none" stroke="#232323" strokeWidth="4" strokeLinecap="round" strokeMiterlimit="10" x1="200.9" y1="126" x2="200.9" y2="61.31"/>
             
-                <line opacity="0.97" fill="none" stroke="#232323" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="337" y1="197.41" x2="273" y2="197.41"/>
+                <line opacity="0.97" fill="none" stroke="#232323" strokeWidth="4" strokeLinecap="round" strokeMiterlimit="10" x1="337" y1="197.41" x2="273" y2="197.41"/>
             
-                <line opacity="0.97" fill="none" stroke="#232323" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="129" y1="197.52" x2="64.98" y2="197.52"/>
+                <line opacity="0.97" fill="none" stroke="#232323" strokeWidth="4" strokeLinecap="round" strokeMiterlimit="10" x1="129" y1="197.52" x2="64.98" y2="197.52"/>
             
-                <line opacity="0.97" fill="none" stroke="#232323" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="200.58" y1="269" x2="200.58" y2="333.22"/>
+                <line opacity="0.97" fill="none" stroke="#232323" strokeWidth="4" strokeLinecap="round" strokeMiterlimit="10" x1="200.58" y1="269" x2="200.58" y2="333.22"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="297.47" y1="101.4" x2="269.31" y2="129.56"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="297.47" y1="101.4" x2="269.31" y2="129.56"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="297.47" y1="293.87" x2="269.31" y2="265.72"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="297.47" y1="293.87" x2="269.31" y2="265.72"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="133.2" y1="129.77" x2="105.04" y2="101.61"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="133.2" y1="129.77" x2="105.04" y2="101.61"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="133.13" y1="265.29" x2="104.97" y2="293.45"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="133.13" y1="265.29" x2="104.97" y2="293.45"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="254.59" y1="72.51" x2="238.6" y2="108.99"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="254.59" y1="72.51" x2="238.6" y2="108.99"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="324.61" y1="251.8" x2="288.14" y2="235.82"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="324.61" y1="251.8" x2="288.14" y2="235.82"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="111.9" y1="158.69" x2="75.43" y2="142.71"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="111.9" y1="158.69" x2="75.43" y2="142.71"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="161.13" y1="284.96" x2="145.14" y2="321.43"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="161.13" y1="284.96" x2="145.14" y2="321.43"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="326.94" y1="148" x2="289.85" y2="162.49"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="326.94" y1="148" x2="289.85" y2="162.49"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="249.68" y1="324.29" x2="235.19" y2="287.19"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="249.68" y1="324.29" x2="235.19" y2="287.19"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="165.11" y1="108.04" x2="150.62" y2="70.95"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="165.11" y1="108.04" x2="150.62" y2="70.95"/>
             
-                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" x1="110.64" y1="232.13" x2="73.54" y2="246.62"/>
+                <line opacity="0.97" fill="none" stroke="#777777" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" x1="110.64" y1="232.13" x2="73.54" y2="246.62"/>
             <g>
                 <g opacity="0.97">
-                    <path fill="#343434" d="M194.73,37.36V22.58h4.31l3.33,5.3c1.03,1.69,1.94,3.52,2.69,5.32l0.06-0.01
+                    <path fill="#232323" d="M194.73,37.36V22.58h4.31l3.33,5.3c1.03,1.69,1.94,3.52,2.69,5.32l0.06-0.01
                         c-0.24-2.09-0.26-3.88-0.26-5.95v-4.66h3.25v14.78h-3.79l-3.48-5.71c-1.01-1.71-2.08-3.61-2.92-5.48l-0.08,0.01
                         c0.11,2.12,0.13,4.14,0.13,6.37v4.82H194.73z"/>
                 </g>
             </g>
             <g>
                 <g opacity="0.97">
-                    <path fill="#343434" d="M197.18,369.93c0.98,0.52,2.5,1.04,4.13,1.04c1.59,0,2.45-0.61,2.45-1.59c0-0.86-0.72-1.39-2.66-1.96
+                    <path fill="#232323" d="M197.18,369.93c0.98,0.52,2.5,1.04,4.13,1.04c1.59,0,2.45-0.61,2.45-1.59c0-0.86-0.72-1.39-2.66-1.96
                         c-2.61-0.75-4.51-2.03-4.51-4.46c0-2.57,2.3-4.47,5.9-4.47c1.92,0,3.24,0.36,4.26,0.82l-0.83,2.75
                         c-0.64-0.29-1.85-0.77-3.49-0.77c-1.53,0-2.26,0.65-2.26,1.4c0,0.96,0.94,1.35,2.97,2c2.83,0.91,4.21,2.22,4.21,4.49
                         c0,2.38-1.85,4.62-6.32,4.62c-1.84,0-3.69-0.51-4.62-1.03L197.18,369.93z"/>
@@ -258,12 +258,12 @@ export const SVG_compass = forwardRef((props, ref) => {
             </g>
             <g>
                 <g opacity="0.97">
-                    <path fill="#343434" d="M370.55,198.38h-6.13v3.35h6.84v2.82h-10.33v-14.78h10v2.82h-6.5v2.97h6.13V198.38z"/>
+                    <path fill="#232323" d="M370.55,198.38h-6.13v3.35h6.84v2.82h-10.33v-14.78h10v2.82h-6.5v2.97h6.13V198.38z"/>
                 </g>
             </g>
             <g>
                 <g opacity="0.97">
-                    <path fill="#343434" d="M26.44,204.55l-3.83-14.78h3.78l1.26,6.15c0.35,1.78,0.72,3.77,0.97,5.16h0.04
+                    <path fill="#232323" d="M26.44,204.55l-3.83-14.78h3.78l1.26,6.15c0.35,1.78,0.72,3.77,0.97,5.16h0.04
                         c0.25-1.53,0.61-3.35,1.01-5.21l1.34-6.1h3.96l1.25,6.37c0.33,1.75,0.58,3.3,0.8,4.84h0.04c0.25-1.55,0.6-3.31,0.97-5.11
                         l1.35-6.1h3.59l-4.22,14.78h-3.82l-1.39-6.87c-0.31-1.51-0.55-2.81-0.73-4.44h-0.04c-0.25,1.62-0.48,2.94-0.85,4.45l-1.55,6.87
                         H26.44z"/>
@@ -309,15 +309,15 @@ export const SVG_compass = forwardRef((props, ref) => {
         </g>
         <g id="arrow">
             <g>
-                <path fill="#C14C4C" d="M172.14,200c-0.18,0-0.36-0.05-0.52-0.14c-0.36-0.22-0.55-0.64-0.46-1.06l28-138
-                    c0.09-0.47,0.5-0.8,0.98-0.8c0,0,0,0,0,0c0.48,0,0.89,0.34,0.98,0.8l27.53,138c0.08,0.41-0.1,0.84-0.47,1.05
-                    c-0.16,0.1-0.34,0.14-0.51,0.14c-0.23,0-0.45-0.08-0.63-0.23c-9.03-7.4-18.16-11.15-27.13-11.15c-8.98,0-18.11,3.75-27.13,11.15
-                    C172.59,199.92,172.37,200,172.14,200z"/>
-                <path fill="#232323" d="M200.15,61l27.53,138c-9.26-7.58-18.51-11.38-27.77-11.38c-9.26,0-18.51,3.79-27.77,11.38L200.15,61
-                    M200.15,59c-0.95,0-1.77,0.67-1.96,1.6l-28,138c-0.17,0.83,0.2,1.67,0.93,2.11c0.32,0.19,0.68,0.29,1.03,0.29
-                    c0.45,0,0.9-0.15,1.27-0.45c8.85-7.25,17.76-10.92,26.5-10.92c8.74,0,17.65,3.68,26.5,10.92c0.37,0.3,0.82,0.45,1.27,0.45
-                    c0.35,0,0.71-0.09,1.03-0.29c0.72-0.43,1.1-1.28,0.93-2.11l-27.53-138C201.92,59.67,201.1,59,200.15,59
-                    C200.15,59,200.15,59,200.15,59L200.15,59z"/>
+                <path fill="#C14C4C" d="M172.14,201c-0.43,0-0.86-0.14-1.22-0.41c-0.61-0.47-0.9-1.24-0.74-1.99l28-138
+                    c0.19-0.93,1.01-1.6,1.96-1.6c0,0,0,0,0,0c0.95,0,1.77,0.67,1.96,1.61l27.53,138c0.15,0.75-0.14,1.52-0.75,1.98
+                    c-0.36,0.27-0.78,0.41-1.21,0.41c-0.31,0-0.62-0.07-0.9-0.21c-8.88-4.48-17.9-6.75-26.81-6.75c-8.91,0-17.97,2.27-26.93,6.76
+                    C172.75,200.93,172.45,201,172.14,201z"/>
+                <path fill="#232323" d="M200.15,61l27.53,138c-9.1-4.59-18.34-6.97-27.71-6.97c-9.16,0-18.44,2.27-27.83,6.97L200.15,61
+                    M200.15,57c-1.9,0-3.54,1.34-3.92,3.2l-28,138c-0.3,1.5,0.27,3.04,1.49,3.97c0.71,0.55,1.57,0.82,2.43,0.82
+                    c0.61,0,1.22-0.14,1.79-0.42c8.68-4.34,17.45-6.55,26.04-6.54c8.59,0,17.31,2.2,25.91,6.54c0.57,0.29,1.19,0.43,1.8,0.43
+                    c0.86,0,1.71-0.28,2.42-0.82c1.22-0.93,1.8-2.47,1.5-3.97l-27.53-138C203.7,58.35,202.06,57,200.15,57
+                    C200.15,57,200.15,57,200.15,57L200.15,57z"/>
             </g>
         </g>
         </svg>

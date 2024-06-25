@@ -10,3 +10,47 @@
     width: 200px;
     height: 200px;
 }
+
+.info_spacer {
+    position: relative;
+    display: flex;
+    width: 160px;
+    height: 100%;
+    flex-direction: column;
+    padding: 0 15px;
+}
+
+.info_spacer .info_line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "verdana", sans-serif;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #888;
+    padding: 5px 0;
+}
+
+.info_line h2 {
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.info_line p span {
+    font-size: 10px;
+    margin-left: 5px;
+    margin-top: 3px;
+    color: #141414;
+}
+
+.info_line p {
+    display: flex;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #777;
+}

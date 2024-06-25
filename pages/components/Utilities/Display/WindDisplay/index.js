@@ -17,7 +17,7 @@ const WindDisplay = () => {
 
             const arrow = svgRef.current.getElementById("arrow");
             
-            gsap.to(arrow, { rotate: weatherData.wind.deg, transformOrigin: "50%, 97%", duration: 1 });
+            gsap.to(arrow, { rotate: weatherData.wind.deg, transformOrigin: "50%, 96%", duration: 1 });
 
         }
 
@@ -26,7 +26,25 @@ const WindDisplay = () => {
     return (
         <>
             <div className={styles.graphic_spacer}>
-            <SVG_compass ref={svgRef} />
+                <SVG_compass ref={svgRef} />
+            </div>
+            <div className={styles.info_spacer}>
+
+                <div className={styles.info_line}>
+                    <h2>Speed</h2>
+                    <p>{Math.round(weatherData.wind.speed * 3.2)} <span>km/h</span></p>
+                </div>
+
+                { 
+                    weatherData.wind.gust &&
+
+                        <div className={styles.info_line}>
+                            <h2>Gust</h2>
+                            <p>{parseInt(weatherData.wind.gust * 3.2)} <span>km/h</span></p>
+                        </div>
+                        
+                }
+
             </div>
         </>
     )
