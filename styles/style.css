@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Vilane";
+    src: url("./fonts/Vilane-Bold.ttf");
+}
+
 body { 
     padding: 0;
     margin: 0;

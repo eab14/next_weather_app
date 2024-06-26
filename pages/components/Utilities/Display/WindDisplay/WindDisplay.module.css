@@ -14,21 +14,25 @@
 .info_spacer {
     position: relative;
     display: flex;
-    width: 160px;
+    width: 200px;
     height: 100%;
     flex-direction: column;
     padding: 0 15px;
+    align-self: start;
+    margin-top: 25px;
 }
 
 .info_spacer .info_line {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    font-family: "verdana", sans-serif;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #888;
-    padding: 5px 0;
+    font-family: "Verdana", sans-serif;
+    margin-bottom: 5px;
+    background: linear-gradient(#343434 60%, #232323);
+    border: 2px solid #444;
+    box-sizing: border-box;
+    padding: 5px 7px;
+    border-radius: 5px;
 }
 
 .info_line h2 {
@@ -37,20 +41,33 @@
     padding: 0;
     font-weight: bold;
     letter-spacing: 1px;
+    color: #d4d4d4;
 }
 
 .info_line p span {
     font-size: 10px;
     margin-left: 5px;
     margin-top: 3px;
-    color: #141414;
+    color: #a4a4a4;
 }
 
 .info_line p {
     display: flex;
-    font-size: 20px;
+    font-size: 24px;
     margin: 0;
     padding: 0;
     font-weight: bold;
-    color: #777;
+    color: #f4f4f4;
+}
+
+.select_spacer {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    width: 80px;
+    height: 26px;
+    border-radius: 4px;
+    background: linear-gradient(#555 60%, #333);
+    border: 1px solid #666;
+    box-sizing: border-box;
 }

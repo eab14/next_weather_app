@@ -16,7 +16,6 @@ const WindDisplay = () => {
         if (svgRef.current && weatherData) {
 
             const arrow = svgRef.current.getElementById("arrow");
-            
             gsap.to(arrow, { rotate: weatherData.wind.deg, transformOrigin: "50%, 96%", duration: 1 });
 
         }
@@ -25,9 +24,11 @@ const WindDisplay = () => {
 
     return (
         <>
+
             <div className={styles.graphic_spacer}>
                 <SVG_compass ref={svgRef} />
             </div>
+
             <div className={styles.info_spacer}>
 
                 <div className={styles.info_line}>
@@ -46,6 +47,9 @@ const WindDisplay = () => {
                 }
 
             </div>
+
+            <div className={styles.select_spacer}></div>
+
         </>
     )
 

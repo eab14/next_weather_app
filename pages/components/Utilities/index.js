@@ -9,10 +9,7 @@ const Utilities = () => {
 
     const [ selected, setSelected ] = useState("temp");
 
-    const clickHandler = (str) => {
-        console.log(str)
-        setSelected(str);
-    }
+    const clickHandler = (str) => setSelected(str);
 
     return (
         <Row>
