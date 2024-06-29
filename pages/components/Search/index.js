@@ -15,9 +15,19 @@ const Search = () => {
     const [ searchList, setSearchList ] = useState([]);
     const [ focused, setFocused ] = useState(false);
 
-    const { getBySearch, weatherList, setWeatherData } = useWeather();
+    const { getBySearch, getById, weatherList, setWeatherData, clearHistory } = useWeather();
 
-    const handleSubmit = (e) => { e.preventDefault(); getBySearch(search); document.activeElement.blur(); setSearch(''); };
+    const handleSubmit = async (e) => {
+
+        e.preventDefault();
+
+        if (/^[0-9]+$/.test(search)) await getById(search);
+        else await getBySearch(search); 
+        
+        document.activeElement.blur(); 
+        setSearch('');
+
+    };
     const handleChange = (e) => setSearch(e.target.value);
 
     useEffect(() => {
@@ -37,7 +47,6 @@ const Search = () => {
 
             }
             
-
         }
 
         else { 
@@ -72,7 +81,7 @@ const Search = () => {
                         searchList.map((data, index) => <div key={index} className={styles.search_list_line} onClick={() => setWeatherData(data)}>{data.name}, {data.sys.country}<span>{data.id}</span></div>)
                 }
 
-                <div key={"history"} className={styles.search_list_line + " " + styles.close}>Clear History</div>
+                <div key={"history"} className={styles.search_list_line + " " + styles.close} onClick={clearHistory}>Clear History</div>
 
             </div>
 

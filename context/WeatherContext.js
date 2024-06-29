@@ -52,7 +52,42 @@ export const WeatherProvider = ({ children }) => {
             data.hourly = data2.hourly;
             data.daily = data2.daily;
             
-            setWeatherList((prev) => [ ...new Set([ ...prev, data ]) ]);
+            setWeatherList((prev) => {
+
+                const update = [ ...prev, data ];
+                localStorage.setItem("weather", JSON.stringify(update));
+                return update
+
+            });
+
+            setWeatherData(data);
+        }
+
+    }, [])
+
+    const getById = useCallback( async (id) => {
+
+        let data = null;
+        let data2 = null;
+
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=c86496cf5e7633a638dc952a412796f3&units=metric`);
+
+        if (response.ok) {
+
+            data = await response.json();
+            data2 = await getOneCall(data.coord.lat, data.coord.lon);
+
+            data.hourly = data2.hourly;
+            data.daily = data2.daily;
+            
+            setWeatherList((prev) => {
+
+                const update = [ ...prev, data ];
+                localStorage.setItem("weather", JSON.stringify(update));
+                return update
+
+            });
+
             setWeatherData(data);
         }
 
@@ -79,7 +114,14 @@ export const WeatherProvider = ({ children }) => {
 
             }));
 
-            setWeatherList((prev) => [ ...new Set([ ...prev, ...data.list ]) ]);
+            setWeatherList((prev) => {
+
+                const update = [ ...prev, ...data.list ];
+                localStorage.setItem("weather", JSON.stringify(update));
+                return update
+
+            });
+
             setWeatherData(data.list[data.list.length - 1]);
 
         }
@@ -114,6 +156,16 @@ export const WeatherProvider = ({ children }) => {
 
     }
 
+    const clearHistory = () => {
+
+        localStorage.clear("weather");
+        localStorage.clear("weather-page");
+        setSelected(null);
+        setPage(1);
+        setWeatherList([]);
+
+    }
+
     useEffect(() => {
 
         if (weatherList.length > 0 && weatherData) {
@@ -121,6 +173,7 @@ export const WeatherProvider = ({ children }) => {
             const index = (weatherList) ? weatherList.findIndex(item => item.id === weatherData.id) : null;
             setSelected(index);
             setPage(Math.ceil((index + 1) / 3));
+            localStorage.setItem("weather-page", JSON.stringify({ index, page: Math.ceil((index + 1) / 3) }))
 
         }
 
@@ -130,17 +183,38 @@ export const WeatherProvider = ({ children }) => {
 
     useEffect(() => {
 
-        async function fetchData() { await getGeo(); }
-        fetchData();
+        const fetchData = async () => {
 
-    }, []);
+            if (!localStorage.getItem("weather")) await getGeo();
+            else { 
+
+                setWeatherList(JSON.parse(localStorage.getItem("weather")));
+                setSelected(JSON.parse(localStorage.getItem("weather-page")).index);
+                setPage(JSON.parse(localStorage.getItem("weather-page")).page);
+
+            }
+
+        }
+
+        (weatherList.length === 0) && fetchData();
+
+    }, [ weatherList ])
+
+    // useEffect(() => {
+
+    //     async function fetchData() { await getGeo(); }
+    //     fetchData();
+
+    // }, []);
 
     const context = {
         weatherData,
         weatherList,
         setWeatherData,
         getBySearch,
-        offset
+        getById,
+        offset,
+        clearHistory
     }
 
     return (
