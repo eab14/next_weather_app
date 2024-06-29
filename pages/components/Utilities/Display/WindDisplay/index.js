@@ -25,6 +25,8 @@ const WindDisplay = () => {
     return (
         <>
 
+            <div className={styles.display_header}><h2>Wind Speed</h2></div>
+
             <div className={styles.graphic_spacer}>
                 <SVG_compass ref={svgRef} />
             </div>
@@ -48,7 +50,10 @@ const WindDisplay = () => {
 
             </div>
 
-            <div className={styles.select_spacer}></div>
+            <div className={styles.select_spacer}>
+                <span className={styles.selected}>kph</span>
+                <span>mph</span>
+            </div>
 
         </>
     )

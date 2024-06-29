@@ -11,7 +11,7 @@ const ForecastButton = (props) => {
 
         if (buttonRef.current) {
 
-            if (props.selected) gsap.to(buttonRef.current, { duration: 0.4, background: "linear-gradient(#343434 60%, #232323)", height: 28 });
+            if (props.selected) gsap.to(buttonRef.current, { duration: 0.4, background: "linear-gradient(#232323 60%, #141414)", height: 28 });
             else gsap.to(buttonRef.current, { duration: 0.4, background: "linear-gradient(#555 60%, #333)", height: 24 });
 
         }

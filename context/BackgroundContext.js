@@ -64,6 +64,7 @@ export const BackgroundProvider = ({ children }) => {
     const addSnow = () => {
 
         if (inter) clearInterval(inter);
+        
         setSky("Snow");
 
         canvas.width = window.innerWidth;

@@ -26,7 +26,7 @@
 .forecast_item {
     position: relative;
     background: linear-gradient(#b4b4b4 60%, #888);
-    border: 2px solid #999;
+    border: 1px solid #999;
     box-sizing: border-box;
     border-radius: 5px;
     height: 100%;
@@ -65,7 +65,7 @@
     color: #777;
 }
 
-.button_spacer .selected { border: 2px solid #444; }
+.button_spacer .selected { border: 1px solid #343434; }
 
 .button_spacer button {
     display: flex;
@@ -73,8 +73,8 @@
     align-items: center;
     width: 100px;
     height: 24px;
-    background: linear-gradient(#343434 60%, #232323);
-    border: 2px solid #666;
+    background: linear-gradient(#555 60%, #333);
+    border: 1px solid #777;
     outline: none;
     border-radius: 5px;
     margin-right: 10px;

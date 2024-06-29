@@ -14,9 +14,9 @@ export const WeatherProvider = ({ children }) => {
 
     const [ weatherData, setWeatherData ] = useState(null);
     const [ offset, setOffset ] = useState(14400);
+
     const [ weatherList, setWeatherList ] = useAtom(weatherArray);
     const [ selected, setSelected ] = useAtom(selectedItem);
-    const [ searchList, setSearchList ] = useAtom(searchArray);
     const [ page, setPage ] = useAtom(selectedPage);
 
     const getOneCall = async (lat, lon) => await new Promise( async (resolve, reject) => {
@@ -36,7 +36,7 @@ export const WeatherProvider = ({ children }) => {
 
     });
 
-    const getGeo = useCallback( async (url, type) => {
+    const getGeo = useCallback( async () => {
 
         let data = null;
         let data2 = null;
@@ -53,7 +53,6 @@ export const WeatherProvider = ({ children }) => {
             data.daily = data2.daily;
             
             setWeatherList((prev) => [ ...new Set([ ...prev, data ]) ]);
-            setSearchList((prev) => [ ...new Set([ ...prev, `${data.name}, ${data.sys.country}` ]) ]);
             setWeatherData(data);
         }
 
@@ -64,27 +63,32 @@ export const WeatherProvider = ({ children }) => {
         let data = null;
         let data2 = null;
 
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=c86496cf5e7633a638dc952a412796f3&units=metric`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/find?q=${input}&appid=c86496cf5e7633a638dc952a412796f3&units=metric&cnt=6`);
 
         if (response.ok) {
 
             data = await response.json();
-            data2 = await getOneCall(data.coord.lat, data.coord.lon);
 
-            data.hourly = data2.hourly;
-            data.daily = data2.daily;
+            await Promise.all(data.list.map(async (item, index) => {
 
-            console.log(data)
+                data2 = await getOneCall(item.coord.lat, item.coord.lon);
 
-            setWeatherList((prev) => [ ...new Set([ ...prev, data ]) ]);
-            setSearchList((prev) => [ ...new Set([ ...prev, input ]) ]);
-            setWeatherData(data);
+                item.hourly = data2.hourly;
+                item.daily = data2.daily;
+                item.timezone = data2.timezone_offset;
+
+            }));
+
+            setWeatherList((prev) => [ ...new Set([ ...prev, ...data.list ]) ]);
+            setWeatherData(data.list[data.list.length - 1]);
 
         }
 
     }, [])
 
     const setWeather = () => {
+
+        console.log(weatherData)
 
         const conditions = [ "Rain", "Thunderstorm", "Drizzle", "Snow" ];
 
@@ -106,16 +110,9 @@ export const WeatherProvider = ({ children }) => {
         else setSky(weatherData.weather[0].description);
 
         setWind(weatherData.wind.speed);
-        setDaylight(weatherData.dt, weatherData.sys.sunrise, weatherData.sys.sunset, weatherData.timezone)
+        setDaylight(weatherData.dt, weatherData.daily[0].sunrise, weatherData.daily[0].sunset, weatherData.timezone)
 
     }
-
-    useEffect(() => {
-
-        async function fetchData() { await getGeo(); }
-        fetchData();
-
-    }, []);
 
     useEffect(() => {
 
@@ -131,8 +128,16 @@ export const WeatherProvider = ({ children }) => {
 
     }, [ weatherList, weatherData ]);
 
+    useEffect(() => {
+
+        async function fetchData() { await getGeo(); }
+        fetchData();
+
+    }, []);
+
     const context = {
         weatherData,
+        weatherList,
         setWeatherData,
         getBySearch,
         offset

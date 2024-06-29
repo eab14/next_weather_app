@@ -98,16 +98,20 @@ const TempDisplay = (props) => {
     useEffect(() => {
 
         setSelected("current");
+
         if (weatherData) { 
             tempRef.current.textContent = `${parseInt(weatherData.main.temp)}`;
             tempRef.current.innerHTML += `<span>°C</span>`;
         }
+        
         (weatherData) && animateTemp(parseInt(weatherData.main.temp))
 
     }, [ weatherData ]);
 
     return (
-        <>
+        <> 
+
+            <div className={styles.display_header}><h2>Temperature</h2></div>
 
             { 
                 selected &&
@@ -130,7 +134,10 @@ const TempDisplay = (props) => {
                 )
             }
 
-            <div className={styles.select_spacer}></div>
+            <div className={styles.select_spacer}>
+                <span className={styles.selected}>°C</span>
+                <span>°F</span>
+            </div>
 
         </>
     );

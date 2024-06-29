@@ -11,13 +11,11 @@
 .display_spacer {
     position: absolute;
     display: flex;
-    width: fit-content;
+    width: 420px;
     top: calc(36px + 12px);
     background: linear-gradient(#f4f4f4 60%, #c4c4c4);
     border-radius: 7px;
     border: 2px solid #b4b4b4;
-    justify-content: center;
-    align-items: center;
     flex-direction: row;
     z-index: 8;
 }
@@ -36,7 +34,7 @@
     bottom: -8px;
     left: 4px;
     width: calc(100% - 8px);
-    border-top: 4px solid #999;
+    border-top: 4px solid #c4c4c4;
     border-radius: 2px;
 }
 
@@ -47,7 +45,7 @@
     width: 50px;
     height: 36px;
     background: linear-gradient(#343434 60%, #232323);
-    border: 2px solid #444;
+    border: 1px solid #444;
     outline: none;
     border-radius: 5px;
     font-size: 18px;

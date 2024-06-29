@@ -43,7 +43,7 @@
 }
 
 .card_pagination .pagination_arrow {
-    background: linear-gradient(#141414 60%, #232323);
+    background: linear-gradient(#232323 60%, #141414);
     border: 2px solid #343434;
 }
 

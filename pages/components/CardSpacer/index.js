@@ -25,8 +25,6 @@ const CardSpacer = () => {
     const [ selected, setSelected ] = useAtom(selectedItem);
     const [ page, setPage ] = useAtom(selectedPage);
 
-    const [ pageArray, setPageArray ] = useState([]);
-
     const totalPages = Math.ceil(weatherList.length / ITEMS);
 
     const handlePageClick = (pageNumber) => setPage(pageNumber);

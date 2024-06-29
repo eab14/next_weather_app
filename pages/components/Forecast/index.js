@@ -25,15 +25,15 @@ const Forecast = () => {
 
     const shiftNext = () => { 
         
-        if ((dailySelected < DAILY_LIMIT - ITEM_LIMIT) && selected === "daily") setDailySelected((prev) => prev + 1);
-        if ((hourlySelected < HOURLY_LIMIT - ITEM_LIMIT) && selected === "hourly") { console.log("?"); setHourlySelected((prev) => prev + 1); }
+        ((dailySelected < DAILY_LIMIT - ITEM_LIMIT) && selected === "daily") && setDailySelected((prev) => prev + 1);
+        ((hourlySelected < HOURLY_LIMIT - ITEM_LIMIT) && selected === "hourly") && setHourlySelected((prev) => prev + 1);
     
     }
 
     const shiftPrev = () => {
 
-        if (dailySelected > 0 && selected === "daily") setDailySelected((prev) => prev - 1);
-        if (hourlySelected > 0 && selected === "hourly") setHourlySelected((prev) => prev - 1);
+        (dailySelected > 0 && selected === "daily") && setDailySelected((prev) => prev - 1);
+        (hourlySelected > 0 && selected === "hourly") && setHourlySelected((prev) => prev - 1);
     
     }
 
@@ -62,7 +62,7 @@ const Forecast = () => {
         <div className={styles.forecast_spacer}>
 
             <div className={styles.item_spacer}>
-                <span className={styles.nav_chevron}><FontAwesomeIcon icon={faChevronLeft} onClick={shiftPrev} /></span>
+                <span className={styles.nav_chevron} onClick={shiftPrev}><FontAwesomeIcon icon={faChevronLeft} /></span>
 
                 <article>
 
@@ -75,7 +75,7 @@ const Forecast = () => {
 
                 </article>
 
-                <span className={styles.nav_chevron}><FontAwesomeIcon icon={faChevronRight} onClick={shiftNext} /></span>
+                <span className={styles.nav_chevron} onClick={shiftNext}><FontAwesomeIcon icon={faChevronRight} /></span>
             </div>
 
             <div className={styles.button_spacer}>
