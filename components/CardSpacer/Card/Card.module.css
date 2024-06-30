@@ -18,7 +18,7 @@
     padding: 0;
     font-weight: bold;
     font-size: 14px;
-    top: 10px;
+    top: 7px;
     right: 10px;
     color: #141414;
 }
@@ -35,11 +35,19 @@
     position: absolute;
     margin: 0;
     padding: 0;
-    bottom: 10px;
+    bottom: 7px;
     right: 10px;
     font-size: 26px;
     font-weight: bold;
     color: #333;
+}
+
+.card h2 span {
+    position: relative;
+    font-size: 14px;
+    margin-left: 3px;
+    top: -8px;
+    color: #555;
 }
 
 .card h4 {
@@ -54,6 +62,15 @@
     color: #232323;
 }
 
+.card h5 {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    font-size: 10px;
+    color: #c4c4c4;
+    font-weight: normal;
+}
+
 .card:hover { cursor: pointer; }
 
 .selected {
@@ -66,6 +83,7 @@
 
 .selected h3 { color: #f4f4f4; }
 .selected h2 { color: #a4a4a4; }
+.selected h2 span { color: #888; }
 .selected h4 { color: #c4c4c4; }
 
 .icon_spacer {

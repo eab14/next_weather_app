@@ -24,7 +24,8 @@ const Card = forwardRef((props, ref) => {
             { props.icon && <img src={`http://openweathermap.org/img/wn/${props.icon}@2x.png`} /> }
             </div>
             { props.city && <h3>{props.city}</h3> }
-            { props.temp && <h2>{parseInt(props.temp) + "° C"}</h2> }
+            { props.selected && <h5>{props.lat}, {props.lon}</h5>}
+            { props.temp && <h2>{parseInt(props.temp)}<span>°C</span></h2> }
 
         </div>
     

@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 import { useWeather } from '@/context/WeatherContext';
-import { SVG_compass } from "@/pages/components/Background/svg";
+import { SVG_compass } from "@/components/Background/svg";
 
 const WindDisplay = () => {
 
@@ -33,10 +33,15 @@ const WindDisplay = () => {
 
             <div className={styles.info_spacer}>
 
-                <div className={styles.info_line}>
-                    <h2>Speed</h2>
-                    <p>{Math.round(weatherData.wind.speed * 3.2)} <span>km/h</span></p>
-                </div>
+                { 
+                    weatherData.wind.speed &&
+
+                    <div className={styles.info_line}>
+                        <h2>Speed</h2>
+                        <p>{Math.round(weatherData.wind.speed * 3.2)} <span>km/h</span></p>
+                    </div>
+
+                }
 
                 { 
                     weatherData.wind.gust &&

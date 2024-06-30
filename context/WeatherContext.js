@@ -1,8 +1,9 @@
 import { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { useBG } from "./BackgroundContext";
+import { useRouter } from 'next/router'
 
 import { useAtom } from "jotai";
-import { searchArray, selectedItem, selectedPage, weatherArray } from "./atomState";
+import { selectedItem, selectedPage, weatherArray } from "./atomState";
 
 const WeatherContext = createContext();
 
@@ -15,9 +16,13 @@ export const WeatherProvider = ({ children }) => {
     const [ weatherData, setWeatherData ] = useState(null);
     const [ offset, setOffset ] = useState(14400);
 
+    const [ error, setError ] = useState(null);
+
     const [ weatherList, setWeatherList ] = useAtom(weatherArray);
     const [ selected, setSelected ] = useAtom(selectedItem);
     const [ page, setPage ] = useAtom(selectedPage);
+
+    const router = useRouter();
 
     const getOneCall = async (lat, lon) => await new Promise( async (resolve, reject) => {
 
@@ -63,6 +68,8 @@ export const WeatherProvider = ({ children }) => {
             setWeatherData(data);
         }
 
+        else setError("Fetch by location failed...");
+
     }, [])
 
     const getById = useCallback( async (id) => {
@@ -90,6 +97,8 @@ export const WeatherProvider = ({ children }) => {
 
             setWeatherData(data);
         }
+
+        else setError("Fetch by ID failed...");
 
     }, [])
 
@@ -126,11 +135,11 @@ export const WeatherProvider = ({ children }) => {
 
         }
 
+        else setError("Fetch by search failed...");
+
     }, [])
 
     const setWeather = () => {
-
-        console.log(weatherData)
 
         const conditions = [ "Rain", "Thunderstorm", "Drizzle", "Snow" ];
 
@@ -152,7 +161,7 @@ export const WeatherProvider = ({ children }) => {
         else setSky(weatherData.weather[0].description);
 
         setWind(weatherData.wind.speed);
-        setDaylight(weatherData.dt, weatherData.daily[0].sunrise, weatherData.daily[0].sunset, weatherData.timezone)
+        setDaylight(weatherData.dt, weatherData.daily[0].sunrise, weatherData.daily[0].sunset, weatherData.timezone);
 
     }
 
@@ -164,6 +173,8 @@ export const WeatherProvider = ({ children }) => {
         setPage(1);
         setWeatherList([]);
 
+        router.push("/");
+
     }
 
     useEffect(() => {
@@ -171,21 +182,26 @@ export const WeatherProvider = ({ children }) => {
         if (weatherList.length > 0 && weatherData) {
 
             const index = (weatherList) ? weatherList.findIndex(item => item.id === weatherData.id) : null;
-            setSelected(index);
+
+            setSelected(() => {
+                localStorage.setItem("weather-page", JSON.stringify({ index, page: Math.ceil((index + 1) / 3) }))
+                return index
+            });
+            
             setPage(Math.ceil((index + 1) / 3));
-            localStorage.setItem("weather-page", JSON.stringify({ index, page: Math.ceil((index + 1) / 3) }))
 
         }
 
         (weatherData) && setWeather();
 
-    }, [ weatherList, weatherData ]);
+    }, [ weatherData ]);
 
     useEffect(() => {
 
         const fetchData = async () => {
 
             if (!localStorage.getItem("weather")) await getGeo();
+
             else { 
 
                 setWeatherList(JSON.parse(localStorage.getItem("weather")));
@@ -200,13 +216,6 @@ export const WeatherProvider = ({ children }) => {
 
     }, [ weatherList ])
 
-    // useEffect(() => {
-
-    //     async function fetchData() { await getGeo(); }
-    //     fetchData();
-
-    // }, []);
-
     const context = {
         weatherData,
         weatherList,
@@ -214,7 +223,9 @@ export const WeatherProvider = ({ children }) => {
         getBySearch,
         getById,
         offset,
-        clearHistory
+        clearHistory,
+        error,
+        setError
     }
 
     return (

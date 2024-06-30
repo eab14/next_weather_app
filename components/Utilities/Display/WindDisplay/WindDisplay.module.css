@@ -1,6 +1,5 @@
 .graphic_spacer {
-    padding-top: 20px;
-    width: 340px;
+    width: 200px;
     display: flex;
     align-items: center;
 }
@@ -8,67 +7,58 @@
 .graphic_spacer svg {
     position: relative;
     display: flex;
-    width: 120px;
-    height: 120px;
-    margin-left: 20px;
+    width: 160px;
+    height: 160px;
+    margin: 10px;
 }
 
-.graphic_spacer h2 {
-    margin: 20px 0;
-    padding: 5px 25px;
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 24px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #f4f4f4;
+.info_spacer {
+    position: relative;
+    display: flex;
+    width: 210px;
+    height: 100%;
+    flex-direction: column;
+    padding: 0 15px;
+    align-self: start;
+    margin-top: 30px;
+}
+
+.info_spacer .info_line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Verdana", sans-serif;
+    margin-bottom: 5px;
     background: linear-gradient(#343434 60%, #232323);
     border: 2px solid #444;
+    box-sizing: border-box;
+    padding: 5px 7px;
+    border-radius: 5px;
 }
 
-.graphic_spacer h2 span {
-    position: relative;
-    top: -8px;
-    color: #a4a4a4;
-    font-size: 14px;
-    margin-left: 3px;
-}
-
-.button_spacer {
-    display: flex;
-    min-width: 140px;
-    height: 140px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.button_spacer button {
-    position: relative;
-    width: 120px;
-    height: 28px;
-    background: linear-gradient(#555 60%, #333);
-    border: 1px solid #777;
-    outline: none;
-    margin-bottom: 5px;
-    color: #f4f4f4;
-    font-size: 9px;
+.info_line h2 {
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
     letter-spacing: 1px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    font-family: "Vilane", sans-serif;
-    z-index: 9;
+    color: #d4d4d4;
 }
 
-.button_spacer button:hover { cursor: pointer; }
+.info_line p span {
+    font-size: 10px;
+    margin-left: 5px;
+    margin-top: 3px;
+    color: #a4a4a4;
+}
 
-.button_spacer .selected {
-    left: 10px;
-    background: linear-gradient(#232323 60%, #141414);
-    border: 1px solid #343434;
+.info_line p {
+    display: flex;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #f4f4f4;
 }
 
 .select_spacer {
@@ -92,12 +82,12 @@
     align-items: center;
     width: 40px;
     height: 100%;
-    font-size: 10px;
+    font-size: 9px;
     text-transform: uppercase;
-    font-family: "Verdana", sans-serif;
-    font-weight: bold;
+    font-family: "Vilane", sans-serif;
     letter-spacing: 1px;
     color: #b4b4b4;
+    box-sizing: border-box;
 }
 
 .select_spacer span:hover { cursor: pointer; }

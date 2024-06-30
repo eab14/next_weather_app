@@ -19,7 +19,7 @@ const CardSpacer = () => {
 
     const cardRefs = useRef([]);
 
-    const { weatherData, setWeatherData } = useWeather();
+    const { setWeatherData } = useWeather();
 
     const [ weatherList ] = useAtom(weatherArray);
     const [ selected, setSelected ] = useAtom(selectedItem);
@@ -29,7 +29,7 @@ const CardSpacer = () => {
 
     const handlePageClick = (pageNumber) => setPage(pageNumber);
 
-    useEffect(() => setWeatherData(weatherList[selected]), [ selected ]);
+    useEffect(() => { setWeatherData(weatherList[selected]);  }, [ selected ]);
     useEffect(() => { cardRefs.current = Array.from({ length: ITEMS }, () => createRef()); }, []);
 
     useEffect(() => {
@@ -58,13 +58,16 @@ const CardSpacer = () => {
                     <Container className={styles.card_spacer}>
 
                         {
-                            weatherList.slice((page - 1) * ITEMS, page * ITEMS).map((data, index) => 
+                            weatherList.slice((page - 1) * ITEMS, page * ITEMS).map((data, index) =>
                                 <Card
                                     key={index}
+                                    id={data.id}
                                     ref={cardRefs.current[index]} 
                                     city={`${data.name}, ${data.sys.country}`} 
                                     icon={data.weather[0].icon} 
                                     temp={data.main.temp}
+                                    lon={data.coord.lon}
+                                    lat={data.coord.lat}
                                     conditions={data.weather[0].description}
                                     onClick={() => setSelected((page - 1) * ITEMS + index)}
                                     selected={selected === (page - 1) * ITEMS + index}

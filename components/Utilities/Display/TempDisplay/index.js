@@ -1,7 +1,7 @@
 import styles from './TempDisplay.module.css';
 
 import { useState, useRef, useEffect } from "react";
-import { SVG_temp } from "../../../Background/svg";
+import { SVG_temp } from "@/components/Background/svg";
 import { useWeather } from '@/context/WeatherContext';
 import { gsap } from 'gsap';
 

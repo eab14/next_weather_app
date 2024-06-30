@@ -89,7 +89,7 @@
 
 .search_list_line:hover { cursor: pointer; opacity: 0.7; background: #444; border: 1px solid #343434; }
 
-.search_list .close { background: rgb(193, 76, 76); border: 1px solid rgb(149, 59, 59); color: #f4f4f4; }
+.search_list .close { background: #c14c4c; border: 1px solid rgb(149, 59, 59); color: #f4f4f4; }
 
 .search_list_line span {
     position: absolute;
@@ -97,4 +97,27 @@
     right: 3px;
     color: #a4a4a4;
     font-size: 9px;
+}
+
+.search_error_icon {
+    display: flex;
+    position: absolute;
+    width: 50px;
+    height: 36px;
+    left: -50px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #c14c4c;
+    opacity: 0;
+}
+
+.search_error_message {
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    color: #c14c4c;
+    font-family: "Verdana", sans-serif;
+    font-size: 10px;
+    opacity: 0;
 }

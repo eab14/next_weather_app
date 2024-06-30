@@ -2,20 +2,23 @@ import { useEffect, useRef, useState } from 'react';
 import { useWeather } from '@/context/WeatherContext';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { gsap } from 'gsap';
 
 import styles from './Search.module.css';
+import Link from 'next/link';
 
 const Search = () => {
 
     const listRef = useRef(null);
+    const errorIconRef = useRef(null);
+    const errorMessageRef = useRef(null);
 
     const [ search, setSearch ] = useState('');
     const [ searchList, setSearchList ] = useState([]);
     const [ focused, setFocused ] = useState(false);
 
-    const { getBySearch, getById, weatherList, setWeatherData, clearHistory } = useWeather();
+    const { getBySearch, getById, weatherList, error, setError, clearHistory } = useWeather();
 
     const handleSubmit = async (e) => {
 
@@ -28,6 +31,7 @@ const Search = () => {
         setSearch('');
 
     };
+    
     const handleChange = (e) => setSearch(e.target.value);
 
     useEffect(() => {
@@ -60,12 +64,30 @@ const Search = () => {
 
     useEffect(() => setSearchList(weatherList.slice(-4)), [ weatherList ]);
 
+    useEffect(() => {
+
+        if (error) {
+
+            gsap.to(errorMessageRef.current, { duration: 0.4, opacity: 1 })
+            gsap.to(errorIconRef.current, { duration: 1, opacity: 1, repeat: 4, yoyo: true, onComplete: () => setError(null) })
+
+        }
+
+        else {
+
+            gsap.to(errorMessageRef.current, { duration: 0.6, opacity: 0 })
+            gsap.to(errorIconRef.current, { duration: 0.6, opacity: 0 })
+
+        }
+
+    }, [ error ])
+
     return (
 
         <div className={styles.search_spacer}>
-
-            <div className={styles.search_error_icon}></div>
-            <div className={styles.search_error_message}></div>
+            
+            <div ref={errorIconRef} className={styles.search_error_icon}><FontAwesomeIcon icon={faTriangleExclamation} /></div>
+            <div ref={errorMessageRef} className={styles.search_error_message}>{error}</div>
 
             <form onSubmit={handleSubmit}>
                 <input type="search" placeholder="Enter city..." value={search} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} onChange={handleChange} />
@@ -78,7 +100,11 @@ const Search = () => {
                 {
                     searchList &&
 
-                        searchList.map((data, index) => <div key={index} className={styles.search_list_line} onClick={() => setWeatherData(data)}>{data.name}, {data.sys.country}<span>{data.id}</span></div>)
+                        searchList.map((data, index) => 
+                            <Link key={index} href={"/id/" + data.id}>
+                                <div className={styles.search_list_line}>{data.name}, {data.sys.country}<span>{data.id}</span></div>
+                            </Link>
+                        )
                 }
 
                 <div key={"history"} className={styles.search_list_line + " " + styles.close} onClick={clearHistory}>Clear History</div>
