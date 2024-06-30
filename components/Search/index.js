@@ -98,16 +98,28 @@ const Search = () => {
             <div ref={listRef} className={styles.search_list}>
 
                 {
-                    searchList &&
+                    focused ?
 
-                        searchList.map((data, index) => 
-                            <Link key={index} href={"/id/" + data.id}>
-                                <div className={styles.search_list_line}>{data.name}, {data.sys.country}<span>{data.id}</span></div>
-                            </Link>
-                        )
+                        <>
+
+                        { 
+                        
+                            searchList.map((data, index) => 
+                                <Link key={index} href={"/id/" + data.id}>
+                                    <div className={styles.search_list_line}>{data.name}, {data.sys.country}<span>{data.id}</span></div>
+                                </Link>
+                            ) 
+                        
+                        }
+
+                        <div key={"history"} className={styles.search_list_line + " " + styles.close} onClick={clearHistory}>Clear History</div>
+
+                        </>
+
+                        :
+
+                        <></>
                 }
-
-                <div key={"history"} className={styles.search_list_line + " " + styles.close} onClick={clearHistory}>Clear History</div>
 
             </div>
 

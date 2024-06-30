@@ -37,6 +37,10 @@ canvas {
     height: 100vh;
 }
 
+a:link, a:visited, a:hover {
+    text-decoration: none;
+}
+
 /* Defaults for svg */
 .cls-1 {
     fill: #05230f;

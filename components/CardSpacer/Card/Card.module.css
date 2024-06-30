@@ -71,6 +71,12 @@
     font-weight: normal;
 }
 
+.card h5 span {
+    margin-right: 5px;
+    color: #d4d4d4;
+    font-size: 12px;
+}
+
 .card:hover { cursor: pointer; }
 
 .selected {

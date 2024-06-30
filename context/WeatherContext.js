@@ -37,11 +37,13 @@ export const WeatherProvider = ({ children }) => {
 
         }
 
-        else reject(console.log("Error - One Call API call failed..."));
+        else reject(setError("Fetch through OneCall api failed..."));
 
     });
 
     const getGeo = useCallback( async () => {
+
+        setError(null);
 
         let data = null;
         let data2 = null;
@@ -54,18 +56,22 @@ export const WeatherProvider = ({ children }) => {
             data = await response.json();
             data2 = await getOneCall(position.coords.latitude, position.coords.longitude);
 
-            data.hourly = data2.hourly;
-            data.daily = data2.daily;
-            
-            setWeatherList((prev) => {
+            if (!error) {
 
-                const update = [ ...prev, data ];
-                localStorage.setItem("weather", JSON.stringify(update));
-                return update
+                data.hourly = data2.hourly;
+                data.daily = data2.daily;
+                
+                setWeatherList((prev) => {
 
-            });
+                    const update = [ ...prev, data ];
+                    localStorage.setItem("weather", JSON.stringify(update));
+                    return update
 
-            setWeatherData(data);
+                });
+
+                setWeatherData(data);
+
+            }
         }
 
         else setError("Fetch by location failed...");
@@ -73,6 +79,8 @@ export const WeatherProvider = ({ children }) => {
     }, [])
 
     const getById = useCallback( async (id) => {
+
+        setError(null);
 
         let data = null;
         let data2 = null;
@@ -84,18 +92,23 @@ export const WeatherProvider = ({ children }) => {
             data = await response.json();
             data2 = await getOneCall(data.coord.lat, data.coord.lon);
 
-            data.hourly = data2.hourly;
-            data.daily = data2.daily;
-            
-            setWeatherList((prev) => {
+            if (!error) {
 
-                const update = [ ...prev, data ];
-                localStorage.setItem("weather", JSON.stringify(update));
-                return update
+                data.hourly = data2.hourly;
+                data.daily = data2.daily;
+                
+                setWeatherList((prev) => {
 
-            });
+                    const update = [ ...prev, data ];
+                    localStorage.setItem("weather", JSON.stringify(update));
+                    return update
 
-            setWeatherData(data);
+                });
+
+                setWeatherData(data);
+
+            }
+
         }
 
         else setError("Fetch by ID failed...");
@@ -205,8 +218,15 @@ export const WeatherProvider = ({ children }) => {
             else { 
 
                 setWeatherList(JSON.parse(localStorage.getItem("weather")));
-                setSelected(JSON.parse(localStorage.getItem("weather-page")).index);
-                setPage(JSON.parse(localStorage.getItem("weather-page")).page);
+
+                if (localStorage.getItem("weather-page")) {
+                    
+                    setSelected(JSON.parse(localStorage.getItem("weather-page")).index);
+                    setPage(JSON.parse(localStorage.getItem("weather-page")).page);
+
+                }
+
+                else { setSelected(0); setPage(1); }
 
             }
 

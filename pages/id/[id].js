@@ -2,14 +2,13 @@ import { useWeather } from '@/context/WeatherContext';
 
 import { useRouter } from 'next/router';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 const SingleDisplay = () => {
 
     const router = useRouter();
     
     const { id } = router.query;
-
     const { weatherList, setWeatherData } = useWeather();
 
     useEffect(() => {
@@ -21,7 +20,7 @@ const SingleDisplay = () => {
 
         }
         
-    }, [ weatherList, id ])
+    }, [ id ])
 
     return <></>;
 

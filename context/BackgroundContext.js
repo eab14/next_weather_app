@@ -136,9 +136,9 @@ export const BackgroundProvider = ({ children }) => {
 
     }
 
-    const setWind = (speed) => {
+    const setWind = async (speed) => {
 
-        resetWind();
+        // await resetWind();
 
         let km = speed * 3.2;
         let offset = 0;
@@ -156,7 +156,7 @@ export const BackgroundProvider = ({ children }) => {
 
     }
 
-    const resetWind = () => {
+    const resetWind = async () => {
 
         const trees = document.querySelectorAll(".tree");
         trees.forEach((tree) => { gsap.to(tree, { rotate: 0, yoyo: false, repeat: 0 }) });
